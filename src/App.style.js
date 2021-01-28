@@ -1,8 +1,7 @@
 import styled from '@emotion/styled';
 
 export const App = styled.div`
-  display: flex;
-  flex-direction: column;
-  background: pink;
-  min-height: 100vh
+  background: #f1f2f6;
+  min-height: 100vh;
+  padding: 24px 0;
 `
