@@ -1,10 +1,11 @@
 import * as s from './MainView.style'
+import Routes from '../../Routes'
 
 const MainView = () => {
 
   return (
     <s.MainView>
-      <h2>MainView</h2>
+      <Routes />
     </s.MainView>
   );
 }

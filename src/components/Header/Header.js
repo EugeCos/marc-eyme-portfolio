@@ -12,7 +12,9 @@ const Header = () => {
   const handleClick = menuItem => {
     setSelected(menuItem)
 
-    const url = menuItem.replace(/\s+/g, '-');
+    let url = menuItem.replace(/\s+/g, '-');
+    if (url === 'home') url = '/';
+    
     history.push(url)
   }
 
