@@ -4,6 +4,8 @@ import * as s from './Home.style'
 import { Parallax } from 'react-parallax'
 import { motion } from 'framer-motion'
 
+import Footer from 'components/Footer/Footer'
+
 
 const Home = () => {
   const history = useHistory();
@@ -69,6 +71,8 @@ const Home = () => {
             surreal and fantastical representation of the city he fell in love with, Philadelphia.
           </s.AboutDescription>
         </s.AboutWrapper>
+
+        <Footer />
       </s.Home>
     </motion.nav>
   );

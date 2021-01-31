@@ -1,6 +1,5 @@
 import * as s from './App.style'
 
-
 // Components
 import Header from 'components/Header/Header'
 import MainView from 'components/MainView/MainView'
