@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom';
 import * as s from './Header.style'
 
@@ -6,8 +6,28 @@ const Header = () => {
   const history = useHistory();
   // State
   const [selected, setSelected] = useState('home')
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [isHeaderCollapsed, setIsHeaderCollapsed] = useState(false);
+  
+  useEffect(() => {
+      window.addEventListener('scroll', handleScroll, { passive: true });
+
+      return () => {
+          window.removeEventListener('scroll', handleScroll);
+      };
+  }, []);
+
+  useEffect(() => {
+    scrollPosition > 150 ? setIsHeaderCollapsed(true) : setIsHeaderCollapsed(false)
+  }, [scrollPosition])
 
   
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+  };
+
+
   // Event handlers
   const handleClick = menuItem => {
     setSelected(menuItem)
@@ -31,13 +51,16 @@ const Header = () => {
     )
   })
 
+
   return (
-    <s.Header>
-      <s.Logo src="/img/logo.png" />
-      <s.MenuOptionsContainer>
-        { menuOptions }
-      </s.MenuOptionsContainer>
-    </s.Header>
+    <s.HeaderContainer collapsed={isHeaderCollapsed}>
+      <s.Header collapsed={isHeaderCollapsed}>
+        <s.Logo src="/img/logo.png" collapsed={isHeaderCollapsed} />
+        <s.MenuOptionsContainer collapsed={isHeaderCollapsed}>
+          { menuOptions }
+        </s.MenuOptionsContainer>
+      </s.Header>
+    </s.HeaderContainer>
   );
 }
 

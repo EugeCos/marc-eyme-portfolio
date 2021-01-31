@@ -34,8 +34,8 @@ const Footer = () => {
 
   return (
     <s.FooterWrapper>
-      <s.ArrowWrapper>
-        <FontAwesomeIcon icon={faAngleDoubleUp} style={{ cursor: 'pointer' }} size='lg' onClick={() => window.scrollTo(0, 0)} />
+      <s.ArrowWrapper onClick={() => window.scrollTo(0, 0)}>
+        <FontAwesomeIcon icon={faAngleDoubleUp} size='lg' />
       </s.ArrowWrapper>
       <s.SocialIconsContainer>
         <s.SocialIconsWrapper>{socialJSX}</s.SocialIconsWrapper>

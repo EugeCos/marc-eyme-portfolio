@@ -18,7 +18,7 @@ export const ParallaxOverlay = styled.div`
 `
 
 export const ParallaxContentWrapper = styled.div`
-  height: 375pt;
+  height: 425pt;
 `
 
 export const ParallaxContent = styled.div`
@@ -37,14 +37,14 @@ export const ParallaxContent = styled.div`
 
   &:hover {
     background: rgba(0, 0, 0, 0.85);
-    padding: 7.5pt 22.5pt
+    padding: 5pt 22.5pt
   }
 `
 // -----------------------------------------------
 
 // About section ---------------------------------
 export const AboutWrapper = styled.div`
-  margin: 0 auto;
+  margin: 0 auto 30pt;
   width: 420pt;
   display: flex;
   flex-direction: column;
