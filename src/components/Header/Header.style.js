@@ -2,27 +2,21 @@ import styled from '@emotion/styled';
 
 export const HeaderContainer = styled.div`
   width: 100%;
-  z-index: 2051;
-  position: sticky;
-  top: 0;
-  background: #f1f2f6;
-  padding: ${p => p.collapsed ? '5pt 0' : '18pt 0 20pt'};
+  padding: 5pt 8pt;
 `
 
 export const Header = styled.div`
   margin: 0 auto;
-  width: 720pt;
+  width: 420pt;
   display: flex;
-  flex-direction: ${p => p.collapsed ? 'row' : 'column'};
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   transition: .3s ease
 `
 
 export const Logo = styled.img`
-  width: ${p => p.collapsed ? '60pt' : '80pt'};
-  ${p => p.collapsed && 'padding-right: 40pt'};
-  margin-bottom: ${p => p.collapsed ? 0 : '14pt'};
+  width: 50pt;
   cursor: pointer;
   border: 1px solid transparent;
 `
@@ -30,7 +24,7 @@ export const Logo = styled.img`
 export const MenuOptionsContainer = styled.div`
   display: flex;
   justify-content: space-around;
-  width: ${p => p.collapsed ? '50%' : '70%'};
+  width: 75%;
 `
 
 export const MenuItem = styled.span`
@@ -40,7 +34,7 @@ export const MenuItem = styled.span`
   `}
   width: 82.5pt;
   text-align: center;
-  color: ${p => p.selected ? '#2c2c54' : '#aaa69d'};
+  color: ${p => p.selected ? '#2c2c54' : '#8395a7'};
   font-size: 120%;
   cursor: pointer;
   transition: letter-spacing .3s ease-out, color .3s ease-out;

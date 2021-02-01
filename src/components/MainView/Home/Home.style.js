@@ -18,7 +18,7 @@ export const ParallaxOverlay = styled.div`
 `
 
 export const ParallaxContentWrapper = styled.div`
-  height: 425pt;
+  height: 375pt;
 `
 
 export const ParallaxContent = styled.div`

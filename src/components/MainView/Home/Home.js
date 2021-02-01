@@ -28,8 +28,8 @@ const Home = () => {
     },
     {
       url: 'img/par_sunset_cut.png',
-      contentText: 'BLOG',
-      link: 'blog'
+      contentText: 'ABOUT ME',
+      link: 'about-me'
     }
   ]
 

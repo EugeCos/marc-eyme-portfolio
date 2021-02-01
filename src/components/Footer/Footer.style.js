@@ -5,9 +5,9 @@ export const FooterWrapper = styled.div`
 `
 
 export const ArrowWrapper = styled.div`
-  background: #b2bec3;
+  background: #d1d8e0;
   width: 45pt;
-  height: 45pt;
+  height: 40pt;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,7 +15,7 @@ export const ArrowWrapper = styled.div`
 `
 
 export const SocialIconsContainer = styled.div`
-  background: #2d3436;
+  background: #1e272e;
   width: 100%;
   display: flex;
   align-items: center;
