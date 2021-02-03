@@ -9,7 +9,7 @@ export const ParallaxWrapper = styled.div`
 
 export const ParallaxOverlay = styled.div`
   position: absolute;
-  background: ${p => p.hovered ? 'rgba(0, 0, 0, 0.25)' : 'rgba(0, 0, 0, 0.65)'};
+  background: ${p => p.hovered ? 'rgba(0, 0, 0, 0.15)' : 'rgba(0, 0, 0, 0.45)'};
   left: 0;
   top: 0;
   width: 100%;

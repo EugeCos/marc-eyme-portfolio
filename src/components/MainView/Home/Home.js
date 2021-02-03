@@ -22,7 +22,7 @@ const Home = () => {
 
   const parallaxImages = [
     {
-      url: 'img/par_houses.png',
+      url: 'img/Neon 06.jpg',
       contentText: 'GALLERY',
       link: 'gallery'
     },
@@ -54,24 +54,12 @@ const Home = () => {
     <motion.nav
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.15 }}
+      transition={{ duration: 0.25 }}
     >
       <s.Home>
         <s.ParallaxWrapper>
           { parallaxJSX }
         </s.ParallaxWrapper>
-
-        <s.AboutWrapper>
-          <s.Headshot src={'img/headshot.png'}/>
-          <s.AboutHeader>ABOUT</s.AboutHeader>        
-          <s.AboutDescription>
-            Marc is a professional designer, architecture student, and photographer in the Philadelphia area. He started
-            teaching himself photography when he began architecture school, utilizing what he learned in classes to
-            differentiate his photos. Chris often imagines what could be, rather than what is. This is reflected in his
-            surreal and fantastical representation of the city he fell in love with, Philadelphia.
-          </s.AboutDescription>
-        </s.AboutWrapper>
-
         <Footer />
       </s.Home>
     </motion.nav>

@@ -1,17 +1,14 @@
 import styled from '@emotion/styled';
 
 export const HeaderContainer = styled.div`
-  width: 100%;
-  padding: 5pt 8pt;
-`
-
-export const Header = styled.div`
   margin: 0 auto;
-  width: 420pt;
+  width: 90%;
+  padding: 5pt 8pt;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 1px solid grey;
   transition: .3s ease
 `
 
@@ -24,7 +21,7 @@ export const Logo = styled.img`
 export const MenuOptionsContainer = styled.div`
   display: flex;
   justify-content: space-around;
-  width: 75%;
+  width: 35%;
 `
 
 export const MenuItem = styled.span`
@@ -34,6 +31,7 @@ export const MenuItem = styled.span`
   `}
   width: 82.5pt;
   text-align: center;
+  text-transform: uppercase;
   color: ${p => p.selected ? '#2c2c54' : '#8395a7'};
   font-size: 120%;
   cursor: pointer;
