@@ -56,17 +56,18 @@ export const VerticalCounter = styled.div`
 `
 
 export const BottomSliderWrapper = styled.div`
+  // border: 1px solid red;
   position: absolute;
   left: 0;
   bottom: 0;
   height: 67.5pt;
-  width: 100%;
+  width: calc(100% - 60pt);
   padding-left: 60pt;
   display: flex;
+  align-items: center;
 `
 
 export const CarouselButtonsWrapper = styled.div`
-  border: 1px solid red;
   width: 80pt;
   display: flex;
   align-items: center;
@@ -76,12 +77,14 @@ export const CarouselButtonsWrapper = styled.div`
     border-radius: 50px;
     background: #2f3640;
     color: #fff;
-    padding: 9px 13px;
+    padding: 9px 14px;
     font-weight: 100
   }
 `
 
 export const CarouselSliderWrapper = styled.div`
-  border: 1px solid green;
-  width: 100%;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
 `
