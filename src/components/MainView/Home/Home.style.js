@@ -1,71 +1,87 @@
 import styled from '@emotion/styled';
 
-export const Home = styled.div``
-
-// Parallax section ------------------------------
-export const ParallaxWrapper = styled.div`
-  margin-bottom: 40pt;
+export const Home = styled.div`
+  // border: 1px solid red;
+  position: relative;
+  height: calc(100vh - 66pt)
 `
 
-export const ParallaxOverlay = styled.div`
-  position: absolute;
-  background: ${p => p.hovered ? 'rgba(0, 0, 0, 0.15)' : 'rgba(0, 0, 0, 0.45)'};
-  left: 0;
-  top: 0;
+export const CarouselWrapper = styled.div`
   width: 100%;
   height: 100%;
-  transition: .4s ease;
+  padding: 0 0 0 60pt;
 `
 
-export const ParallaxContentWrapper = styled.div`
-  height: 375pt;
-`
-
-export const ParallaxContent = styled.div`
-  background: rgba(0, 0, 0, 0.75);
-  border-radius: 4.5pt;
-  padding: 5pt 10pt;
+export const VerticalCounterWrapper = styled.div`
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 22.5pt;
-  color: #fff;
-  letter-spacing: 6pt;
-  cursor: pointer;
-  transition: .3s ease;
-
-  &:hover {
-    background: rgba(0, 0, 0, 0.85);
-    padding: 5pt 22.5pt
-  }
-`
-// -----------------------------------------------
-
-// About section ---------------------------------
-export const AboutWrapper = styled.div`
-  margin: 0 auto 30pt;
-  width: 420pt;
+  left: 0;
+  bottom: 67.5pt;
+  top: 0;
+  width: 60pt;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+`
+
+export const VerticalCounter = styled.div`
+  background: #2f3640;
+  width: 60pt;
+  height: 135pt;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  color: #fff;
+
+  & > :first-child {
+    margin: 0 15pt 15pt 0;
+  };
+  
+  & > :last-child {
+    margin-left: 15pt;
+    position: relative;
+
+    &::before {
+      content: '';
+      background: #aaa69d;
+      position: absolute;
+      top: -10px;
+      width: 20px;
+      height: 1px;
+      left: 50%;
+      margin-left: -20px;
+      transform: rotate(-45deg);
+    }
+  }
 `
 
-export const Headshot = styled.img`
-  width: 320pt;
-  border-radius: 7.5pt;
-  box-shadow: 0px 0px 7.5pt #84817a;
-  margin-bottom: 30pt;
+export const BottomSliderWrapper = styled.div`
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 67.5pt;
+  width: 100%;
+  padding-left: 60pt;
+  display: flex;
 `
 
-export const AboutHeader = styled.h2`
-  margin-bottom: 20pt;
+export const CarouselButtonsWrapper = styled.div`
+  border: 1px solid red;
+  width: 80pt;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  & > * {
+    border-radius: 50px;
+    background: #2f3640;
+    color: #fff;
+    padding: 9px 13px;
+    font-weight: 100
+  }
 `
 
-export const AboutDescription = styled.p`
-  text-align: center;
-  font-size: 115%;
-  line-height: 1.6;
-  margin-bottom: 20pt;
+export const CarouselSliderWrapper = styled.div`
+  border: 1px solid green;
+  width: 100%;
 `
-// -----------------------------------------------

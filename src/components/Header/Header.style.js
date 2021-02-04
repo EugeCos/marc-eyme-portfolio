@@ -8,7 +8,6 @@ export const HeaderContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid grey;
   transition: .3s ease
 `
 
@@ -33,7 +32,6 @@ export const MenuItem = styled.span`
   text-align: center;
   text-transform: uppercase;
   color: ${p => p.selected ? '#2c2c54' : '#8395a7'};
-  font-size: 120%;
   cursor: pointer;
   transition: letter-spacing .3s ease-out, color .3s ease-out;
 
