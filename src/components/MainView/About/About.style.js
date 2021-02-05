@@ -14,7 +14,7 @@ export const PictureWrapper = styled.div`
   height: inherit;
   width: 100%;
   position: sticky;
-  background-image: url(img/headshot_bw.png);
+  background-image: url(img/headshot_bw.PNG);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
