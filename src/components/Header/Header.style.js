@@ -32,10 +32,11 @@ export const MenuItem = styled.span`
   text-align: center;
   text-transform: uppercase;
   color: ${p => p.selected ? '#2c2c54' : '#8395a7'};
+  ${p => p.selected && p.darkTheme && 'color: #fff'};
   cursor: pointer;
   transition: letter-spacing .3s ease-out, color .3s ease-out;
 
   &:hover {
-    color: #2c2c54;
+    color: ${p => p.darkTheme ? '#fff' : '#2c2c54'};
   }
 `

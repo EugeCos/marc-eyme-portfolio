@@ -1,12 +1,19 @@
-import { useState, useLayoutEffect } from 'react'
+import { useState, useLayoutEffect, useContext } from 'react'
 import { useHistory } from 'react-router-dom';
 import * as s from './Header.style'
+
+// Context
+import AppContext from 'Context';
+
 
 const Header = () => {
   const history = useHistory();
 
   // State
   const [selected, setSelected] = useState('')
+  
+  // Context
+  const context = useContext(AppContext);
 
 
   // Effects
@@ -39,6 +46,7 @@ const Header = () => {
         key={`0${index}-${item}`}
         selected={item === selected}
         onClick={() => handleMenuItemClick(item)}
+        darkTheme={context.darkTheme}
       >
         {item}
       </s.MenuItem>

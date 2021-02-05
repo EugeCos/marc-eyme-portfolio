@@ -6,7 +6,7 @@ export const Home = styled.div`
   height: calc(100vh - 66pt)
 `
 
-export const CarouselWrapper = styled.div`
+export const CarouselContainer = styled.div`
   width: 100%;
   height: 100%;
   padding: 0 0 0 60pt;
@@ -24,14 +24,15 @@ export const VerticalCounterWrapper = styled.div`
 `
 
 export const VerticalCounter = styled.div`
-  background: #2f3640;
+  background: ${p => p.darkTheme ? '#778beb' : '#1e272e'};
   width: 60pt;
   height: 135pt;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #fff;
+  color: ${p => p.darkTheme ? '#1e272e' : '#fff'};
+  ${p => p.darkTheme && 'font-weight: 600'};
 
   & > :first-child {
     margin: 0 15pt 15pt 0;
@@ -43,7 +44,7 @@ export const VerticalCounter = styled.div`
 
     &::before {
       content: '';
-      background: #aaa69d;
+      background: ${p => p.darkTheme ? '#485460' : '#aaa69d'};
       position: absolute;
       top: -10px;
       width: 20px;
@@ -55,8 +56,55 @@ export const VerticalCounter = styled.div`
   }
 `
 
+export const CarouselWrapper = styled.div`
+  width: auto;
+  min-width: 3000px;
+  height: calc(100% - 69.5pt);
+  display: flex;
+  padding-left: 2pt;
+`
+
+export const SliderImageWrapper = styled.div`
+  height: 100%;
+  position: relative;
+`
+
+export const SliderImage = styled.img`
+  max-width: 100%;
+  max-height: 100%;
+  margin-right: 7.5pt;
+`
+
+export const SliderImageDataWrapper = styled.div`
+  position: absolute;
+  bottom: 30pt;
+  left: 30pt;
+  width: 80%;
+  color: #fff;
+  display: flex;
+  flex-direction: column
+`
+
+export const ImageName = styled.h2`
+  cursor: pointer;
+  padding-bottom: 10pt;
+  transition: .3s ease;
+  width: fit-content;
+  ${p => p.blackFont && 'color: #333'};
+
+  &:hover {
+    text-shadow: 2px 2px 5px ${p => p.blackFont ? 'grey' : 'red'};
+  }
+`
+
+export const ImageDescription = styled.p`
+  font-style: italic;
+  font-size: 85%;
+  display: inline-block;
+  color: ${p => p.blackFont ? '#333' : '#d1ccc0'}
+`
+
 export const BottomSliderWrapper = styled.div`
-  // border: 1px solid red;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -74,9 +122,10 @@ export const CarouselButtonsWrapper = styled.div`
   justify-content: space-around;
 
   & > * {
+    cursor: pointer;
     border-radius: 50px;
-    background: #2f3640;
-    color: #fff;
+    background: ${p => p.darkTheme ? '#778beb' : '#1e272e'};
+    color: ${p => p.darkTheme ? '#1e272e' : '#fff'};
     padding: 9px 14px;
     font-weight: 100
   }
@@ -87,4 +136,13 @@ export const CarouselSliderWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin: 0 auto;
+`
+
+// -------------------------------------
+// Dark Theme
+export const DarkTheme = styled.div`
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100
 `
