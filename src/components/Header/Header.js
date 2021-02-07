@@ -46,7 +46,7 @@ const Header = () => {
         key={`0${index}-${item}`}
         selected={item === selected}
         onClick={() => handleMenuItemClick(item)}
-        darkTheme={context.darkTheme}
+        palette={context.palette}
       >
         {item}
       </s.MenuItem>

@@ -31,12 +31,11 @@ export const MenuItem = styled.span`
   width: 82.5pt;
   text-align: center;
   text-transform: uppercase;
-  color: ${p => p.selected ? '#2c2c54' : '#8395a7'};
-  ${p => p.selected && p.darkTheme && 'color: #fff'};
+  color: ${p => p.selected ? p.palette.menuItemActive : p.palette.menuItemPassive};
   cursor: pointer;
   transition: letter-spacing .3s ease-out, color .3s ease-out;
 
   &:hover {
-    color: ${p => p.darkTheme ? '#fff' : '#2c2c54'};
+    color: ${p => p.palette.menuItemActive};
   }
 `

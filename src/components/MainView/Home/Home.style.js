@@ -6,12 +6,6 @@ export const Home = styled.div`
   height: calc(100vh - 66pt)
 `
 
-export const CarouselContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  padding: 0 0 0 60pt;
-`
-
 export const VerticalCounterWrapper = styled.div`
   position: absolute;
   left: 0;
@@ -24,14 +18,14 @@ export const VerticalCounterWrapper = styled.div`
 `
 
 export const VerticalCounter = styled.div`
-  background: ${p => p.darkTheme ? '#778beb' : '#1e272e'};
+  background: ${p => p.palette.buttons};
   width: 60pt;
   height: 135pt;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: ${p => p.darkTheme ? '#1e272e' : '#fff'};
+  color: ${p => p.palette.textVerticalSlider};
   ${p => p.darkTheme && 'font-weight: 600'};
 
   & > :first-child {
@@ -56,6 +50,12 @@ export const VerticalCounter = styled.div`
   }
 `
 
+export const CarouselContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  padding: 0 0 0 60pt;
+`
+
 export const CarouselWrapper = styled.div`
   width: auto;
   min-width: 3000px;
@@ -69,10 +69,12 @@ export const SliderImageWrapper = styled.div`
   position: relative;
 `
 
-export const SliderImage = styled.img`
+export const SliderImage = styled.img`  
   max-width: 100%;
   max-height: 100%;
   margin-right: 7.5pt;
+  border-radius: 20px;
+  box-shadow: 0 0 4px #d1d8e0
 `
 
 export const SliderImageDataWrapper = styled.div`
@@ -124,8 +126,8 @@ export const CarouselButtonsWrapper = styled.div`
   & > * {
     cursor: pointer;
     border-radius: 50px;
-    background: ${p => p.darkTheme ? '#778beb' : '#1e272e'};
-    color: ${p => p.darkTheme ? '#1e272e' : '#fff'};
+    background: ${p => p.palette.buttons};
+    color: ${p => p.palette.textVerticalSlider};
     padding: 9px 14px;
     font-weight: 100
   }

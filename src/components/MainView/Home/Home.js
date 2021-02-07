@@ -8,10 +8,6 @@ import { withStyles } from '@material-ui/core/styles';
 import Slider from '@material-ui/core/Slider';
 import Switch from '@material-ui/core/Switch';
 
-// Carousel
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-
 // import Footer from 'components/Footer/Footer'
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -26,7 +22,7 @@ const Home = () => {
 
   // Context
   const context = useContext(AppContext);
-  const { handleDarkThemeToggle, darkTheme } = context;
+  const { handleDarkThemeToggle, darkTheme, palette } = context;
 
 
   const responsive = {
@@ -51,18 +47,18 @@ const Home = () => {
 
   const sliderPhotos = [
     {
-      url: 'img/slider/Neon 01.jpg',
-      name: 'Rogers Centre',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing'
-    },
-    {
-      url: 'img/slider/Toronto 01.jpg',
+      url: 'img/slider/Toronto 02.jpg',
       name: 'CN Tower',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing'
     },
     {
-      url: 'img/slider/Toronto 03.jpg',
+      url: 'img/slider/Neon 02.jpg',
       name: 'Winter Streetcar',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing'
+    },
+    {
+      url: 'img/slider/Neon 06.jpg',
+      name: 'Rogers Centre',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing'
     },
     {
@@ -77,8 +73,8 @@ const Home = () => {
             <s.SliderImageWrapper key={`${index}-${item}`}>
               <s.SliderImage src={item.url} />
               <s.SliderImageDataWrapper>
-                <s.ImageName blackFont={item.name === 'Winter Streetcar'}>{item.name}</s.ImageName>
-                <s.ImageDescription blackFont={item.name === 'Winter Streetcar'}>{item.description}</s.ImageDescription>
+                <s.ImageName blackFont={item.name === 'to-do'}>{item.name}</s.ImageName>
+                <s.ImageDescription blackFont={item.name === 'to-do'}>{item.description}</s.ImageDescription>
               </s.SliderImageDataWrapper>
             </s.SliderImageWrapper>
     )
@@ -87,13 +83,13 @@ const Home = () => {
   // https://material-ui.com/components/slider/
 const PhotoSlider = withStyles({
   root: {
-    color: darkTheme ? '#546de5' : '#222f3e',
+    color: palette.slider,
     height: 8,
   },
   thumb: {
     height: 11,
     width: 50,
-    backgroundColor: darkTheme ? '#778beb' : '#1e272e',
+    backgroundColor: palette.buttons,
     marginTop: -3,
     marginLeft: -12,
     '&:focus, &:hover, &$active': {
@@ -119,7 +115,7 @@ const PhotoSlider = withStyles({
     >
       <s.Home>
         <s.DarkTheme>
-          <p style={{ color: darkTheme ? '#fff' : '#333'}}>Dark theme</p>
+          <p style={{ color: palette.menuItemActive }}>Dark theme</p>
           <Switch
             checked={darkTheme}
             color={darkTheme ? 'primary' : 'default'}
@@ -132,7 +128,7 @@ const PhotoSlider = withStyles({
         <s.CarouselContainer>
           <s.VerticalCounterWrapper>
             {/* Vertical box with photo count */}
-            <s.VerticalCounter darkTheme={darkTheme}>
+            <s.VerticalCounter palette={palette} darkTheme={darkTheme}>
               <p>1</p>
               <p>4</p>
             </s.VerticalCounter>
@@ -141,18 +137,18 @@ const PhotoSlider = withStyles({
           {/* Main view */}
           <s.CarouselWrapper>
             {sliderPhotosJSX}        
-            <Carousel responsive={responsive}>
+            {/* <Carousel responsive={responsive}>
               <div>Item 1</div>
               <div>Item 2</div>
               <div>Item 3</div>
               <div>Item 4</div>
-            </Carousel>;
+            </Carousel>; */}
           </s.CarouselWrapper>
 
 
           {/* Footer with slider */}
           <s.BottomSliderWrapper>
-            <s.CarouselButtonsWrapper darkTheme={darkTheme}>
+            <s.CarouselButtonsWrapper palette={palette}>
               <FontAwesomeIcon icon={faCaretLeft} />              
               <FontAwesomeIcon icon={faCaretRight} />
             </s.CarouselButtonsWrapper>
