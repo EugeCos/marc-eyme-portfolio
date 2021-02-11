@@ -1,23 +1,47 @@
 import styled from '@emotion/styled';
 
 export const CarouselWrapper = styled.div`
+  ${p => p.active && 'cursor: grabbing'};
+  // transform: ${p => p.active ? 'scale(1)' : 'scale(0.98)'};
+  width: calc(100% - 66pt);
+  overflow-x: auto;
   height: calc(100% - 69.5pt);
   display: flex;
-  padding-left: 2pt;
-  border: 2px solid green
+  align-items: center;
+  padding-left: 6pt;
+
+  ::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 8px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 8px rgba(0,0,0,0.5); 
+  }
+
+  .image-card {
+    height: 100%;
+    position: relative;
+    flex-shrink: 0;
+  }
 `
 
 export const SliderImageWrapper = styled.div`
-  height: 100%;
+  height: 95%;
   position: relative;
+  flex-shrink: 0;
 `
 
 export const SliderImage = styled.img`
-//   max-width: 100%;
-//   max-height: 100%;
-//   margin-right: 7.5pt;
-//   border-radius: 20px;
-//   box-shadow: 0 0 4px #d1d8e0
+  max-height: 100%;
+  margin-right: 7.5pt;
+  border-radius: 20px;
+  box-shadow: 0 0 4px #d1d8e0
 `
 
 export const SliderImageDataWrapper = styled.div`
