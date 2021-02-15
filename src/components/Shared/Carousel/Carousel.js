@@ -2,7 +2,7 @@ import { useState, useRef } from 'react'
 import * as s from './Carousel.style'
 
 
-const CarouselWithScrollbar = () => {
+const CarouselWithScrollbar = ({ handleScroll }) => {
   // Refs
   const carouselWrapperRef = useRef();
 
@@ -56,17 +56,13 @@ const CarouselWithScrollbar = () => {
   const [startX, setStartX] = useState(null);
   const [scrollLeft, setScrollLeft] = useState(null);
 
-  const handleScroll = e => {
-    const scrLeft = carouselWrapperRef.current.scrollLeft;
-    setScrollLeft(scrLeft)
-  }
-
   const handleMouseDown = e => {
     const offsetLeft = carouselWrapperRef.current.offsetLeft
-    const xPosition = e.pageX;
+    const xPosition = e.pageX - offsetLeft;
 
+    setStartX(xPosition);
+    setScrollLeft(carouselWrapperRef.current.scrollLeft)
     setIsDown(true)
-    setStartX(xPosition - offsetLeft);
   }
 
   const handleMouseLeave = e => {
@@ -82,8 +78,8 @@ const CarouselWithScrollbar = () => {
     if (!isDown) return;
     e.preventDefault();
     const xPosition = e.pageX - offsetLeft;
-    const walk = (xPosition - startX) * 3;
-    carouselWrapperRef.current.scrollTo({ behavior: 'smooth', left: scrollLeft - walk })
+    const walk = (xPosition - startX) * 2;
+    carouselWrapperRef.current.scrollTo({ left: scrollLeft - walk })
   }
 
 
@@ -103,3 +99,4 @@ const CarouselWithScrollbar = () => {
 };
 
 export default CarouselWithScrollbar;
+ 
