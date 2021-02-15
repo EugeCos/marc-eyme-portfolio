@@ -11,7 +11,7 @@ import AppContext from './Context';
 
 
 const App = () => {
-  const [darkTheme, toggleDarkTheme] = useState(false);
+  const [darkTheme, toggleDarkTheme] = useState(true);
 
   const handleDarkThemeToggle = () => {
     toggleDarkTheme(!darkTheme)

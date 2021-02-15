@@ -3,6 +3,7 @@ body {
   padding: 0;
   font-family: 'Rubik';
   overflow-x: hidden;
+  scroll-behavior: smooth;
   font-size: 10.5pt;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

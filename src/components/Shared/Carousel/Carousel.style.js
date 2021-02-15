@@ -1,8 +1,6 @@
 import styled from '@emotion/styled';
 
 export const CarouselWrapper = styled.div`
-  ${p => p.active && 'cursor: grabbing'};
-  // transform: ${p => p.active ? 'scale(1)' : 'scale(0.98)'};
   width: calc(100% - 66pt);
   overflow-x: auto;
   height: calc(100% - 69.5pt);
@@ -38,10 +36,12 @@ export const SliderImageWrapper = styled.div`
 `
 
 export const SliderImage = styled.img`
+  cursor: ${p => p.active ? 'grabbing' : 'grab'};
+  // transform: ${p => p.active ? 'scale(1)' : 'scale(0.98)'}; add 'selected'
   max-height: 100%;
   margin-right: 7.5pt;
   border-radius: 20px;
-  box-shadow: 0 0 4px #d1d8e0
+  box-shadow: 0 0 4px #d1d8e0;
 `
 
 export const SliderImageDataWrapper = styled.div`

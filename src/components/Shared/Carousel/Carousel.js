@@ -6,6 +6,38 @@ const CarouselWithScrollbar = ({ handleScroll }) => {
   // Refs
   const carouselWrapperRef = useRef();
 
+  // State
+  const [isDown, setIsDown] = useState(false);
+  const [startX, setStartX] = useState(null);
+  const [scrollLeft, setScrollLeft] = useState(null);
+
+  // Event handlers
+  const handleMouseDown = e => {
+    const offsetLeft = carouselWrapperRef.current.offsetLeft
+    const xPosition = e.pageX - offsetLeft;
+
+    setStartX(xPosition);
+    setScrollLeft(carouselWrapperRef.current.scrollLeft)
+    setIsDown(true)
+  }
+
+  const handleMouseLeave = e => {
+    setIsDown(false)
+  }
+
+  const handleMouseUp = e => {
+    setIsDown(false)
+  }
+
+  const handleMouseMove = e => {
+    const offsetLeft = carouselWrapperRef.current.offsetLeft;
+    if (!isDown) return;
+    e.preventDefault();
+    const xPosition = e.pageX - offsetLeft;
+    const walk = (xPosition - startX) * 2;
+    carouselWrapperRef.current.scrollTo({ left: scrollLeft - walk })
+  }
+
 
   const sliderPhotos = [
     {
@@ -43,7 +75,7 @@ const CarouselWithScrollbar = ({ handleScroll }) => {
   const sliderPhotosJSX = sliderPhotos.map((item, index) => {
     return (
       <s.SliderImageWrapper key={`${index}-${item}`}>
-        <s.SliderImage src={item.url} dragable={true} />
+        <s.SliderImage src={item.url} active={isDown} />
         <s.SliderImageDataWrapper>
           <s.ImageName blackFont={item.name === 'to-do'}>{item.name}</s.ImageName>
           <s.ImageDescription blackFont={item.name === 'to-do'}>{item.description}</s.ImageDescription>
@@ -51,36 +83,6 @@ const CarouselWithScrollbar = ({ handleScroll }) => {
       </s.SliderImageWrapper>
     )
   })
-
-  const [isDown, setIsDown] = useState(false);
-  const [startX, setStartX] = useState(null);
-  const [scrollLeft, setScrollLeft] = useState(null);
-
-  const handleMouseDown = e => {
-    const offsetLeft = carouselWrapperRef.current.offsetLeft
-    const xPosition = e.pageX - offsetLeft;
-
-    setStartX(xPosition);
-    setScrollLeft(carouselWrapperRef.current.scrollLeft)
-    setIsDown(true)
-  }
-
-  const handleMouseLeave = e => {
-    setIsDown(false)
-  }
-
-  const handleMouseUp = e => {
-    setIsDown(false)
-  }
-
-  const handleMouseMove = e => {
-    const offsetLeft = carouselWrapperRef.current.offsetLeft;
-    if (!isDown) return;
-    e.preventDefault();
-    const xPosition = e.pageX - offsetLeft;
-    const walk = (xPosition - startX) * 2;
-    carouselWrapperRef.current.scrollTo({ left: scrollLeft - walk })
-  }
 
 
   return (
@@ -90,7 +92,6 @@ const CarouselWithScrollbar = ({ handleScroll }) => {
       onMouseLeave={handleMouseLeave}
       onMouseUp={handleMouseUp}
       onMouseMove={handleMouseMove}
-      active={isDown}
       ref={carouselWrapperRef}
     >
       {sliderPhotosJSX}
