@@ -2,25 +2,11 @@ import styled from '@emotion/styled';
 
 export const CarouselWrapper = styled.div`
   width: calc(100% - 66pt);
-  overflow-x: auto;
+  overflow-x: hidden;
   height: calc(100% - 69.5pt);
   display: flex;
   align-items: center;
   padding-left: 6pt;
-
-  ::-webkit-scrollbar {
-    height: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 8px rgba(0,0,0,0.3); 
-    border-radius: 10px;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 8px rgba(0,0,0,0.5); 
-  }
 
   .image-card {
     height: 100%;
@@ -37,11 +23,12 @@ export const SliderImageWrapper = styled.div`
 
 export const SliderImage = styled.img`
   cursor: ${p => p.active ? 'grabbing' : 'grab'};
-  // transform: ${p => p.active ? 'scale(1)' : 'scale(0.98)'}; add 'selected'
+  transform: ${p => p.active ? 'scale(1)' : 'scale(0.98)'};
   max-height: 100%;
   margin-right: 7.5pt;
   border-radius: 20px;
   box-shadow: 0 0 4px #d1d8e0;
+  transition: .2s ease-in
 `
 
 export const SliderImageDataWrapper = styled.div`

@@ -1,15 +1,44 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import * as s from './Carousel.style'
 
 
-const CarouselWithScrollbar = ({ handleScroll }) => {
+const CarouselWithScrollbar = ({ 
+  setCarouselScrollWidth,
+  setSliderPosition,
+  setImagesWidth,
+  sliderPosition = 0
+}) => {
   // Refs
   const carouselWrapperRef = useRef();
+
 
   // State
   const [isDown, setIsDown] = useState(false);
   const [startX, setStartX] = useState(null);
   const [scrollLeft, setScrollLeft] = useState(null);
+  const [clickedImage, setClickedImage] = useState(null)
+
+  
+  // Effects
+  // Set overflow width
+  useEffect(() => {    
+    if (carouselWrapperRef?.current) {
+      setCarouselScrollWidth(carouselWrapperRef.current.scrollWidth)
+
+      const imagesWidths = []
+      for (let i of carouselWrapperRef.current.children) {
+        imagesWidths.push(i.offsetWidth)
+      }
+      setImagesWidth(imagesWidths)
+    }
+  }, [carouselWrapperRef?.current?.scrollWidth, setCarouselScrollWidth])
+
+
+  // Set slider position
+  useEffect(() => {
+    carouselWrapperRef.current.scrollTo({ left: sliderPosition })
+  }, [sliderPosition])
+
 
   // Event handlers
   const handleMouseDown = e => {
@@ -21,11 +50,11 @@ const CarouselWithScrollbar = ({ handleScroll }) => {
     setIsDown(true)
   }
 
-  const handleMouseLeave = e => {
+  const handleMouseLeave = () => {
     setIsDown(false)
   }
 
-  const handleMouseUp = e => {
+  const handleMouseUp = () => {
     setIsDown(false)
   }
 
@@ -35,7 +64,7 @@ const CarouselWithScrollbar = ({ handleScroll }) => {
     e.preventDefault();
     const xPosition = e.pageX - offsetLeft;
     const walk = (xPosition - startX) * 2;
-    carouselWrapperRef.current.scrollTo({ left: scrollLeft - walk })
+    setSliderPosition(scrollLeft - walk)
   }
 
 
@@ -75,7 +104,12 @@ const CarouselWithScrollbar = ({ handleScroll }) => {
   const sliderPhotosJSX = sliderPhotos.map((item, index) => {
     return (
       <s.SliderImageWrapper key={`${index}-${item}`}>
-        <s.SliderImage src={item.url} active={isDown} />
+        <s.SliderImage 
+          src={item.url}
+          active={index === clickedImage}
+          onMouseDown={() => setClickedImage(index)}
+          onMouseUp={() => setClickedImage(null)}
+        />
         <s.SliderImageDataWrapper>
           <s.ImageName blackFont={item.name === 'to-do'}>{item.name}</s.ImageName>
           <s.ImageDescription blackFont={item.name === 'to-do'}>{item.description}</s.ImageDescription>
@@ -87,7 +121,6 @@ const CarouselWithScrollbar = ({ handleScroll }) => {
 
   return (
     <s.CarouselWrapper
-      onScroll={handleScroll}
       onMouseDown={handleMouseDown}
       onMouseLeave={handleMouseLeave}
       onMouseUp={handleMouseUp}

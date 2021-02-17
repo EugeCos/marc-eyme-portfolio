@@ -26,6 +26,49 @@ const Home = () => {
   const context = useContext(AppContext);
   const { handleDarkThemeToggle, darkTheme, palette } = context;
 
+
+  // State
+  const [carouselScrollWidth, setCarouselScrollWidth] = useState(0)
+  const [sliderPosition, setSliderPosition] = useState(0)
+  const [imagesWidths, setImagesWidth] = useState([])
+  const [imageBreakpoints, setImageBreakpoints] = useState([])
+  const [count, setCount] = useState(1)
+
+
+  // Effects
+  useEffect(() => {
+    const newPosition = carouselScrollWidth / (imagesWidths.length - count)
+    imagesWidths[0] > 100 && setSliderPosition(newPosition)
+  }, [count, imagesWidths])
+  // To-DO
+  // useEffect(() => {
+  //   const breakPoints = [];
+  //   console.log("Images widths: ", imagesWidths)
+  //   if (carouselScrollWidth > 1000 && !imageBreakpoints.length) {
+  //     imagesWidths.forEach((item, index) => {
+  //       breakPoints.push(carouselScrollWidth / 1.2 / (imagesWidths.length - index - 1))
+  //     })
+  //   }
+
+  //   if ()
+
+  // }, [sliderPosition])
+
+
+  // Event handlers
+  const handleCarouselScroll = value => {
+    setSliderPosition(value)
+  }
+
+
+  const handleArrowClick = arrowType => {
+    let counter = count;
+    if (arrowType === 'increase' && count < imagesWidths.length) counter++;
+    else if (arrowType === 'decrease' && count > 1) counter--;
+    setCount(counter)
+  }
+
+
   // https://material-ui.com/components/slider/
   const PhotoSlider = withStyles({
     root: {
@@ -75,33 +118,35 @@ const Home = () => {
           <s.VerticalCounterWrapper>
             {/* Vertical box with photo count */}
             <s.VerticalCounter palette={palette} darkTheme={darkTheme}>
-              <p>1</p>
-              <p>4</p>
+              <p>{count}</p>
+              <p>{imagesWidths.length}</p>
             </s.VerticalCounter>
           </s.VerticalCounterWrapper>
 
           {/* Main view */}
-          <CarouselWithScrollbar />
+          <CarouselWithScrollbar 
+            setCarouselScrollWidth={setCarouselScrollWidth}
+            setSliderPosition={setSliderPosition}
+            setImagesWidth={setImagesWidth}
+            sliderPosition={sliderPosition}
+          />
 
           {/* Footer with slider */}
           <s.BottomSliderWrapper>
             <s.CarouselButtonsWrapper palette={palette}>
-              <FontAwesomeIcon icon={faCaretLeft} />              
-              <FontAwesomeIcon icon={faCaretRight} />
+              <FontAwesomeIcon icon={faCaretLeft} onClick={() => handleArrowClick("decrease")} />              
+              <FontAwesomeIcon icon={faCaretRight} onClick={() => handleArrowClick("increase")} />
             </s.CarouselButtonsWrapper>
             <s.CarouselSliderWrapper>
-            <PhotoSlider />
-              {/* <Slider
+              <Slider
                 defaultValue={1}
                 color='secondary'
-                // getAriaValueText={valuetext}
-                aria-labelledby="discrete-slider-small-steps"
-                step={1}
-                marks
+                step={carouselScrollWidth / 300}
                 min={1}
-                max={5}
-                valueLabelDisplay="auto"
-              /> */}
+                max={carouselScrollWidth / 2}
+                onChange={(e, val) => handleCarouselScroll(val)}
+                value={sliderPosition}
+              />
             </s.CarouselSliderWrapper>
           </s.BottomSliderWrapper>
         </s.CarouselContainer>
