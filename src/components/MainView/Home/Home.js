@@ -36,23 +36,31 @@ const Home = () => {
 
 
   // Effects
+  // Set breakpoints array
   useEffect(() => {
-    const newPosition = carouselScrollWidth / (imagesWidths.length - count)
-    imagesWidths[0] > 100 && setSliderPosition(newPosition)
-  }, [count, imagesWidths])
-  // To-DO
-  // useEffect(() => {
-  //   const breakPoints = [];
-  //   console.log("Images widths: ", imagesWidths)
-  //   if (carouselScrollWidth > 1000 && !imageBreakpoints.length) {
-  //     imagesWidths.forEach((item, index) => {
-  //       breakPoints.push(carouselScrollWidth / 1.2 / (imagesWidths.length - index - 1))
-  //     })
-  //   }
+    const breakpoints = [0];
+    let sum = 0;
+    imagesWidths.forEach(item => {
+      const iterationSum = sum += item;
+      breakpoints.push(iterationSum);      
+    })
+    
+    setImageBreakpoints(breakpoints)
+  }, [carouselScrollWidth, imagesWidths])
 
-  //   if ()
 
-  // }, [sliderPosition])
+  useEffect(() => {
+    const newPosition = imageBreakpoints[count - 1];
+    console.log("Count: ", count)
+    console.log("BP: ", imageBreakpoints)
+    console.log("New position: ", newPosition)
+    
+    
+    
+    if (newPosition || newPosition === 0) {
+      setSliderPosition(newPosition)
+    }
+  }, [count, imageBreakpoints])
 
 
   // Event handlers
@@ -63,7 +71,7 @@ const Home = () => {
 
   const handleArrowClick = arrowType => {
     let counter = count;
-    if (arrowType === 'increase' && count < imagesWidths.length) counter++;
+    if (arrowType === 'increase' && count < imagesWidths.length - 2) counter++;
     else if (arrowType === 'decrease' && count > 1) counter--;
     setCount(counter)
   }
