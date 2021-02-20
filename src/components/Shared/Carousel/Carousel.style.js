@@ -15,6 +15,16 @@ export const CarouselWrapper = styled.div`
   }
 `
 
+export const Viewport = styled.div`
+  height: 100%;
+  width: 100%;
+`
+
+export const Content = styled.div`
+  height: 100%;
+  display: flex;
+`
+
 export const SliderImageWrapper = styled.div`
   height: 95%;
   position: relative;

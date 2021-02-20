@@ -51,12 +51,6 @@ const Home = () => {
 
   useEffect(() => {
     const newPosition = imageBreakpoints[count - 1];
-    console.log("Count: ", count)
-    console.log("BP: ", imageBreakpoints)
-    console.log("New position: ", newPosition)
-    
-    
-    
     if (newPosition || newPosition === 0) {
       setSliderPosition(newPosition)
     }
