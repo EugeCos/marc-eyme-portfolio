@@ -20,7 +20,6 @@ const CarouselWithScrollbar = ({
   const [startX, setStartX] = useState(null);
   const [scrollLeft, setScrollLeft] = useState(null);
   const [clickedImage, setClickedImage] = useState(null)
-
   
   useLayoutEffect(() => {
     carouselWrapperRef.current = new ScrollBooster({
@@ -31,7 +30,11 @@ const CarouselWithScrollbar = ({
       textSelection: true,
       friction: 0.1,
       emulateScroll: true,
-      dragDirectionTolerance: 100
+      dragDirectionTolerance: 100,
+
+      onUpdate: state => {
+        const posX = state.position.x;
+      }
     })
   })
 
