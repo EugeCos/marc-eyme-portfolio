@@ -1,11 +1,11 @@
-import { useState, useRef, useLayoutEffect, useEffect } from 'react'
+import { useRef, useLayoutEffect, useEffect } from 'react'
 import * as s from './Carousel.style'
 import ScrollBooster from 'scrollbooster'
 
 
 const CarouselWithScrollbar = ({ 
   setCarouselScrollWidth,
-  setSliderPosition,
+  handleCarouselScroll,
   setImagesWidth,
   sliderPosition = 0
 }) => {
@@ -15,12 +15,16 @@ const CarouselWithScrollbar = ({
   const contentRef = useRef()
 
 
-  // State
-  const [isDown, setIsDown] = useState(false);
-  const [startX, setStartX] = useState(null);
-  const [scrollLeft, setScrollLeft] = useState(null);
-  const [clickedImage, setClickedImage] = useState(null)
-  
+
+  // Effects
+  // Update content position if user drages slider or uses arrows
+  useEffect(() => {
+    // carouselWrapperRef.current.position.x = -sliderPosition;
+    carouselWrapperRef.current.scrollTo({ x: sliderPosition, y: 0 })
+  }, [carouselWrapperRef.current, sliderPosition])
+
+
+  // Initialize carousel scroll booster
   useLayoutEffect(() => {
     carouselWrapperRef.current = new ScrollBooster({
       viewport: viewportRef.current,
@@ -28,63 +32,36 @@ const CarouselWithScrollbar = ({
       direction: "horizontal",
       scrollMode: "transform",
       textSelection: true,
-      friction: 0.1,
+      friction: 0.05,
       emulateScroll: true,
-      dragDirectionTolerance: 100,
+      dragDirectionTolerance: 99,
 
       onUpdate: state => {
-        const posX = state.position.x;
+        const posX = Math.round(state.position.x)
+        handleCarouselScroll(posX)
       }
     })
   })
 
-  // Effects
-  // Set overflow width
-  // useEffect(() => {    
-  //   if (carouselWrapperRef?.current) {
-  //     setCarouselScrollWidth(carouselWrapperRef.current.scrollWidth)
 
-  //     const imagesWidths = []
-  //     for (let i of carouselWrapperRef.current.children) {
-  //       imagesWidths.push(i.offsetWidth)
-  //     }
-  //     setImagesWidth(imagesWidths)
-  //   }
-  // }, [carouselWrapperRef?.current?.scrollWidth, setCarouselScrollWidth])
-
-
-  // // Set slider position
-  // useEffect(() => {
-  //   carouselWrapperRef.current.scrollTo({ left: sliderPosition })
-  // }, [sliderPosition])
-
-
-  // Event handlers
-  const handleMouseDown = e => {
-    const offsetLeft = carouselWrapperRef.current.offsetLeft
-    const xPosition = e.pageX - offsetLeft;
-
-    setStartX(xPosition);
-    setScrollLeft(carouselWrapperRef.current.scrollLeft)
-    setIsDown(true)
-  }
-
-  const handleMouseLeave = () => {
-    setIsDown(false)
-  }
-
-  const handleMouseUp = () => {
-    setIsDown(false)
-  }
-
-  const handleMouseMove = e => {
-    const offsetLeft = carouselWrapperRef.current.offsetLeft;
-    if (!isDown) return;
-    e.preventDefault();
-    const xPosition = e.pageX - offsetLeft;
-    const walk = (xPosition - startX) * 2;
-    setSliderPosition(scrollLeft - walk)
-  }
+  // Set slider range width and set widths for each image
+  useEffect(() => {
+    // Timeout is needed because CSS loads before JS
+    setTimeout(() => {
+      if (carouselWrapperRef?.current) {
+        // Set total overflow width (edge to edge)
+        setCarouselScrollWidth(Math.abs(carouselWrapperRef.current.edgeX.from))
+        
+        
+        // Set width of all children
+        const imagesWidths = []
+        for (let i of contentRef.current.children) {
+          imagesWidths.push(i.offsetWidth)
+        }
+        setImagesWidth(imagesWidths)
+      }
+    }, 100)
+  }, [carouselWrapperRef?.current?.content?.width, setImagesWidth, setCarouselScrollWidth])
 
 
   const sliderPhotos = [
@@ -94,9 +71,9 @@ const CarouselWithScrollbar = ({
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing'
     },
     {
-      url: 'img/slider/Neon 02.jpg',
+      url: 'img/slider/Toronto 03.jpg',
       name: 'Winter Streetcar',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing'
+      description: 'Lorem ipsum dolor sit amet'
     },
     {
       url: 'img/slider/Neon 06.jpg',
@@ -117,37 +94,26 @@ const CarouselWithScrollbar = ({
       url: 'img/slider/Neon 04.jpg',
       name: 'Exit Red',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing'
-    },
+    }
 ];
 
 
   const sliderPhotosJSX = sliderPhotos.map((item, index) => {
     return (
-
-        <s.SliderImageWrapper key={`${index}-${item}`}>
-          <s.SliderImage 
-            src={item.url}
-            active={index === clickedImage}
-            // onMouseDown={() => setClickedImage(index)}
-            // onMouseUp={() => setClickedImage(null)}
-          />
-          <s.SliderImageDataWrapper>
-            <s.ImageName blackFont={item.name === 'to-do'}>{item.name}</s.ImageName>
-            <s.ImageDescription blackFont={item.name === 'to-do'}>{item.description}</s.ImageDescription>
-          </s.SliderImageDataWrapper>
-        </s.SliderImageWrapper>
+      <s.SliderImageWrapper key={`${index}-${item}`}>
+        <s.SliderImage src={item.url} />
+        <s.SliderImageDataWrapper>
+          <s.ImageName blackFont={item.name === 'to-do'}>{item.name}</s.ImageName>
+          <s.ImageDescription blackFont={item.name === 'to-do'}>{item.description}</s.ImageDescription>
+          <s.DarkOverlay />
+        </s.SliderImageDataWrapper>
+      </s.SliderImageWrapper>
     )
   })
 
 
   return (
-    <s.CarouselWrapper
-      // onMouseDown={handleMouseDown}
-      // onMouseLeave={handleMouseLeave}
-      // onMouseUp={handleMouseUp}
-      // onMouseMove={handleMouseMove}
-      ref={carouselWrapperRef}
-    >
+    <s.CarouselWrapper ref={carouselWrapperRef}>
       <s.Viewport ref={viewportRef}>
         <s.Content ref={contentRef}>
           {sliderPhotosJSX}

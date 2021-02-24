@@ -7,12 +7,6 @@ export const CarouselWrapper = styled.div`
   display: flex;
   align-items: center;
   padding-left: 6pt;
-
-  .image-card {
-    height: 100%;
-    position: relative;
-    flex-shrink: 0;
-  }
 `
 
 export const Viewport = styled.div`
@@ -26,29 +20,26 @@ export const Content = styled.div`
 `
 
 export const SliderImageWrapper = styled.div`
-  height: 95%;
+  height: 100%;
   position: relative;
   flex-shrink: 0;
+  cursor: grab;
 `
 
 export const SliderImage = styled.img`
-  cursor: ${p => p.active ? 'grabbing' : 'grab'};
-  transform: ${p => p.active ? 'scale(1)' : 'scale(0.98)'};
   max-height: 100%;
   margin-right: 7.5pt;
-  border-radius: 20px;
-  box-shadow: 0 0 4px #d1d8e0;
-  transition: .2s ease-in
+  border-radius: 2px;
 `
 
 export const SliderImageDataWrapper = styled.div`
   position: absolute;
-  bottom: 30pt;
-  left: 30pt;
-  width: 80%;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 30pt;
   color: #fff;
   display: flex;
-  flex-direction: column
+  flex-direction: column;
 `
 
 export const ImageName = styled.h2`
@@ -56,10 +47,12 @@ export const ImageName = styled.h2`
   padding-bottom: 10pt;
   transition: .3s ease;
   width: fit-content;
+  padding-left: 30pt;
   ${p => p.blackFont && 'color: #333'};
+  z-index: 1;
 
   &:hover {
-    text-shadow: 2px 2px 5px ${p => p.blackFont ? 'grey' : 'red'};
+    text-shadow: 2px 2px 5px #c44569;
   }
 `
 
@@ -67,5 +60,18 @@ export const ImageDescription = styled.p`
   font-style: italic;
   font-size: 85%;
   display: inline-block;
-  color: ${p => p.blackFont ? '#333' : '#d1ccc0'}
+  padding-left: 30pt;
+  z-index: 1;
+  color: #d1ccc0;
+`
+
+export const DarkOverlay = styled.div`
+  position: absolute;
+  width: calc(100% - 9pt);
+  bottom: 0;
+  height: 100pt;
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0) 0,
+      rgba(20, 20, 20, 1) 100%
+  );
 `

@@ -21,18 +21,24 @@ const App = () => {
     dark: {
       background: '#333',
       buttons: '#eb3b5a',
-      slider: '#e74c3c',
       menuItemPassive: '#8395a7',
       textVerticalSlider: '#2c2c54',
-      menuItemActive: '#fff'
+      menuItemActive: '#fff',
+      slider: {
+        thumb: '#eb3b5a',
+        range: '#000000'
+      }
     },
     light: {
       background: '#fff',
       buttons: '#1e272e',
-      slider: '#222f3e',
       menuItemPassive: '#8395a7',
       textVerticalSlider: '#fff',
-      menuItemActive: '#2c2c54'
+      menuItemActive: '#2c2c54',
+      slider: {
+        thumb: '#000000',
+        range: '#b2bec3'
+      }
     }
   }
 

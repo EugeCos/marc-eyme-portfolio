@@ -1,11 +1,9 @@
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect, useContext, useRef } from 'react'
 import { useHistory } from 'react-router-dom'
 import * as s from './Home.style'
 import { motion } from 'framer-motion'
 
-// Slider
-import { withStyles } from '@material-ui/core/styles';
-import Slider from '@material-ui/core/Slider';
+// Material UI
 import Switch from '@material-ui/core/Switch';
 
 // Carousel
@@ -21,6 +19,9 @@ import AppContext from 'Context';
 
 const Home = () => {
   const history = useHistory();
+
+  // Refs
+  const sliderRef = useRef()
 
   // Context
   const context = useContext(AppContext);
@@ -52,51 +53,31 @@ const Home = () => {
   useEffect(() => {
     const newPosition = imageBreakpoints[count - 1];
     if (newPosition || newPosition === 0) {
-      setSliderPosition(newPosition)
+      newPosition !== sliderPosition && setSliderPosition(newPosition)
     }
   }, [count, imageBreakpoints])
 
 
   // Event handlers
   const handleCarouselScroll = value => {
-    setSliderPosition(value)
+    if (sliderRef?.current?.valueAsNumber) {
+      sliderRef.current.valueAsNumber = value
+    }
+  }
+
+
+  const handleSliderChange = e => {
+    setSliderPosition(Number(e.target.value))
   }
 
 
   const handleArrowClick = arrowType => {
     let counter = count;
-    if (arrowType === 'increase' && count < imagesWidths.length - 2) counter++;
+    if (arrowType === 'increase' && count < imagesWidths.length) counter++;
     else if (arrowType === 'decrease' && count > 1) counter--;
     setCount(counter)
   }
 
-
-  // https://material-ui.com/components/slider/
-  const PhotoSlider = withStyles({
-    root: {
-      color: palette.slider,
-      height: 8,
-    },
-    thumb: {
-      height: 11,
-      width: 50,
-      backgroundColor: palette.buttons,
-      marginTop: -3,
-      marginLeft: -12,
-      '&:focus, &:hover, &$active': {
-        boxShadow: 'inherit',
-      },
-    },
-    track: {
-      height: 6,
-      borderRadius: 4,
-    },
-    rail: {
-      height: 6,
-      borderRadius: 4,
-    },
-  })(Slider);
-  
 
   return (
     <motion.nav
@@ -111,8 +92,6 @@ const Home = () => {
             checked={darkTheme}
             color={darkTheme ? 'primary' : 'default'}
             onChange={() => handleDarkThemeToggle(!darkTheme)}
-            // name="checkedA"
-            // inputProps={{ 'aria-label': 'secondary checkbox' }}
           />
 
         </s.DarkTheme>
@@ -128,8 +107,8 @@ const Home = () => {
           {/* Main view */}
           <CarouselWithScrollbar 
             setCarouselScrollWidth={setCarouselScrollWidth}
-            setSliderPosition={setSliderPosition}
             setImagesWidth={setImagesWidth}
+            handleCarouselScroll={handleCarouselScroll}
             sliderPosition={sliderPosition}
           />
 
@@ -139,15 +118,15 @@ const Home = () => {
               <FontAwesomeIcon icon={faCaretLeft} onClick={() => handleArrowClick("decrease")} />              
               <FontAwesomeIcon icon={faCaretRight} onClick={() => handleArrowClick("increase")} />
             </s.CarouselButtonsWrapper>
+            
             <s.CarouselSliderWrapper>
-              <Slider
-                defaultValue={1}
-                color='secondary'
-                step={carouselScrollWidth / 300}
+              <s.Slider
+                type='range'
                 min={1}
-                max={carouselScrollWidth / 2}
-                onChange={(e, val) => handleCarouselScroll(val)}
-                value={sliderPosition}
+                max={carouselScrollWidth}
+                ref={sliderRef}
+                palette={palette}
+                onChange={e => handleSliderChange(e)}
               />
             </s.CarouselSliderWrapper>
           </s.BottomSliderWrapper>

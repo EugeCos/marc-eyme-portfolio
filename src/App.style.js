@@ -2,5 +2,5 @@ import styled from '@emotion/styled';
 
 export const App = styled.div`
   min-height: 100vh;
-  ${p => p.darkTheme && 'background: #333'}
+  ${p => p.darkTheme && 'background: #1c1c1c'}
 `
