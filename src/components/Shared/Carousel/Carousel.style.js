@@ -24,6 +24,12 @@ export const SliderImageWrapper = styled.div`
   position: relative;
   flex-shrink: 0;
   cursor: grab;
+
+  &:hover {
+    span {
+      transform: scale(1)
+    }
+  }
 `
 
 export const SliderImage = styled.img`
@@ -74,4 +80,24 @@ export const DarkOverlay = styled.div`
       rgba(0, 0, 0, 0) 0,
       rgba(20, 20, 20, 1) 100%
   );
+`
+
+export const SearchIconContainer = styled.span`
+  position: absolute;
+  top: 22.5pt;
+  right: 22.5pt;
+  width: 30pt;
+  height: 30pt;
+  transform: scale(0);
+  background: rgba(0,0,0,0.7);
+  border-radius: 100%;
+  cursor: pointer;
+  transition: all 200ms linear;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+export const SearchIcon = styled.img`
+  height: 12px;
 `

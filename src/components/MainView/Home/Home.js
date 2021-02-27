@@ -1,6 +1,8 @@
 import { useState, useEffect, useContext, useRef } from 'react'
 import { useHistory } from 'react-router-dom'
 import * as s from './Home.style'
+
+// Framer motion
 import { motion } from 'framer-motion'
 
 // Material UI
@@ -53,7 +55,7 @@ const Home = () => {
   useEffect(() => {
     const newPosition = imageBreakpoints[count - 1];
     if (newPosition || newPosition === 0) {
-      newPosition !== sliderPosition && setSliderPosition(newPosition)
+      // newPosition !== sliderPosition && setSliderPosition(newPosition)
     }
   }, [count, imageBreakpoints])
 

@@ -5,6 +5,7 @@ import * as s from './App.style'
 // Components
 import Header from 'components/Header/Header'
 import MainView from 'components/MainView/MainView'
+import ScreenSlider from 'components/Shared/ScreenSlider/ScreenSlider'
 
 // Context
 import AppContext from './Context';
@@ -12,6 +13,7 @@ import AppContext from './Context';
 
 const App = () => {
   const [darkTheme, toggleDarkTheme] = useState(true);
+  const [sliderOpened, openSlider] = useState(false);
 
   const handleDarkThemeToggle = () => {
     toggleDarkTheme(!darkTheme)
@@ -45,7 +47,9 @@ const App = () => {
   const context = {
     darkTheme,
     palette: palettes[darkTheme ? 'dark' : 'light'],
-    handleDarkThemeToggle
+    handleDarkThemeToggle,
+    openSlider,
+    sliderOpened
   }
 
 
@@ -54,9 +58,11 @@ const App = () => {
       <s.App darkTheme={darkTheme}>
         <Header />
         <MainView />
+        <ScreenSlider />
       </s.App>
     </AppContext.Provider>
   );
 }
 
 export default App;
+
