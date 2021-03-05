@@ -14,6 +14,7 @@ import AppContext from './Context';
 const App = () => {
   const [darkTheme, toggleDarkTheme] = useState(true);
   const [sliderOpened, openSlider] = useState(false);
+  const [gallerySelected, setGallerySelected] = useState(null)
 
   const handleDarkThemeToggle = () => {
     toggleDarkTheme(!darkTheme)
@@ -49,16 +50,22 @@ const App = () => {
     palette: palettes[darkTheme ? 'dark' : 'light'],
     handleDarkThemeToggle,
     openSlider,
-    sliderOpened
+    sliderOpened,
+    gallerySelected,
+    setGallerySelected
   }
 
 
   return (
     <AppContext.Provider value={context}>
       <s.App darkTheme={darkTheme}>
-        <Header />
-        <MainView />
-        <ScreenSlider />
+        { sliderOpened && <ScreenSlider /> }
+        { !sliderOpened && (
+          <>
+            <Header />
+            <MainView />
+          </>
+        )}
       </s.App>
     </AppContext.Provider>
   );

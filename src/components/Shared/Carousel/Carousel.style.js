@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const CarouselWrapper = styled.div`
   width: calc(100% - 66pt);
-  overflow-x: hidden;
+  // overflow-x: hidden;
   height: calc(100% - 69.5pt);
   display: flex;
   align-items: center;

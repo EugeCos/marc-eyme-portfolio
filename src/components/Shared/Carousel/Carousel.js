@@ -1,5 +1,6 @@
-import { useRef, useLayoutEffect, useEffect, useContext } from 'react'
+import { useRef, useLayoutEffect, useEffect, useContext, useState } from 'react'
 import * as s from './Carousel.style'
+import ImageCollections from '../../../ImageCollections'
 import ScrollBooster from 'scrollbooster'
 
 // Context
@@ -20,15 +21,30 @@ const CarouselWithScrollbar = ({
 
   // Context
   const context = useContext(AppContext);
-  const { openSlider } = context;
+  const { openSlider, setGallerySelected } = context;
 
+
+  // State
+  const [sliderPhotos, setSliderPhotos] = useState([])
 
   // Effects
   // Update content position if user drages slider or uses arrows
   useEffect(() => {
     carouselWrapperRef.current.position.x = -sliderPosition;
     // carouselWrapperRef.current.scrollTo({ x: sliderPosition, y: 0 })
-  }, [carouselWrapperRef.current, sliderPosition])
+  }, [sliderPosition])
+
+
+  // Set slider images
+  useEffect(() => {
+    const images = [];
+
+    for(let item in ImageCollections) {
+      images.push(ImageCollections[item][0]) 
+    }
+
+    setSliderPhotos(images)
+  }, [])
 
 
   // Initialize carousel scroll booster
@@ -71,55 +87,39 @@ const CarouselWithScrollbar = ({
   }, [carouselWrapperRef?.current?.content?.width, setImagesWidth, setCarouselScrollWidth])
 
 
-  const handleZoomClick = e => {
+  const handleZoomClick = (e, gallery) => {
     e.preventDefault()
     openSlider(true)
+    setGallerySelected(gallery)
   }
 
 
-  const sliderPhotos = [
-    {
-      url: 'img/slider/Toronto 02.jpg',
-      name: 'Neon Gallery 1',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing'
-    },
-    {
-      url: 'img/slider/Neon 04.jpg',
-      name: 'Neon Gallery 2',
-      description: 'Lorem ipsum dolor sit amet'
-    },
-    {
-      url: 'img/slider/Toronto 03.jpg',
-      name: 'Toronto Night',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing'
-    },
-    {
-      url: 'img/slider/Toronto 02.jpg',
-      name: 'Toronto Day',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing'
-    }
-    // {
-    //   url: 'img/slider/Neon 03.jpg',
-    //   name: 'Exit Red',
-    //   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing'
-    // },
-    // {
-    //   url: 'img/slider/Neon 01.jpg',
-    //   name: 'Exit Red',
-    //   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing'
-    // },
-    // {
-    //   url: 'img/slider/Neon 04.jpg',
-    //   name: 'Exit Red',
-    //   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing'
-    // }
-];
+//   const sliderPhotos = [    
+//     {
+//       url: 'img/slider/Neon 01.jpg',
+//       gallery: 'Neon Collection 1',
+//       name: 'Neon Gallery 1',
+//       description: 'Lorem ipsum dolor sit amet'
+//     },
+//     {
+//         url: 'img/slider/Neon 04.jpg',
+//         gallery: 'Neon Collection 2',
+//         name: 'Neon Gallery 2',
+//         description: 'Lorem ipsum dolor sit amet'
+//     },
+//     {
+//         url: 'img/slider/Toronto 01.jpg',
+//         gallery: 'Toronto Collection',
+//         name: 'Toronto Gallery',
+//         description: 'Lorem ipsum dolor sit amet'
+//     }
+// ];
 
 
   const sliderPhotosJSX = sliderPhotos.map((item, index) => {
     return (
       <s.SliderImageWrapper key={`${index}-${item}`}>
-        <s.SearchIconContainer onClick={e => handleZoomClick(e)}>
+        <s.SearchIconContainer onClick={e => handleZoomClick(e, item.gallery)}>
           <s.SearchIcon src={'img/icons/search.svg'} />
         </s.SearchIconContainer>
         <s.SliderImage src={item.url} />
