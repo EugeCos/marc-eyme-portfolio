@@ -1,21 +1,21 @@
-const ImageCollections = {
+export const ImageCollections = {
     neon1: [
         {
             url: 'img/slider/Neon 01.jpg',
             gallery: 'neon1',
-            name: 'Neon 1',
+            name: 'Rogers Centre' ,
             description: 'Lorem ipsum dolor sit amet'
         },
         {
             url: 'img/slider/Neon 02.jpg',
             gallery: 'neon1',
-            name: 'Neon 2',
+            name: 'Open Sign',
             description: 'Lorem ipsum dolor sit amet'
         },
         {
             url: 'img/slider/Neon 03.jpg',
             gallery: 'neon1',
-            name: 'Neon 3',
+            name: 'Exit Sign',
             description: 'Lorem ipsum dolor sit amet'
         },
     ],
@@ -23,19 +23,19 @@ const ImageCollections = {
         {
             url: 'img/slider/Neon 04.jpg',
             gallery: 'neon2',
-            name: 'Neon 3',
+            name: 'Neon BMO',
             description: 'Lorem ipsum dolor sit amet'
         },
         {
             url: 'img/slider/Neon 05.jpg',
             gallery: 'neon2',
-            name: 'Neon 4',
+            name: 'Tim Hortons',
             description: 'Lorem ipsum dolor sit amet'
         },
         {
             url: 'img/slider/Neon 06.jpg',
             gallery: 'neon2',
-            name: 'Neon 5',
+            name: 'Waterlight',
             description: 'Lorem ipsum dolor sit amet'
         }
     ],
@@ -43,22 +43,41 @@ const ImageCollections = {
         {
             url: 'img/slider/Toronto 01.jpg',
             gallery: 'toronto',
-            name: 'Toronto 1',
+            name: 'CN Framed',
             description: 'Lorem ipsum dolor sit amet'
         },
         {
             url: 'img/slider/Toronto 02.jpg',
             gallery: 'toronto',
-            name: 'Toronto 2',
+            name: 'Nadege',
             description: 'Lorem ipsum dolor sit amet'
         },
         {
             url: 'img/slider/Toronto 03.jpg',
             gallery: 'toronto',
-            name: 'Toronto 3',
+            name: 'Snowy Streetcar',
+            description: 'Lorem ipsum dolor sit amet'
+        },
+        {
+            url: 'img/slider/Toronto 04.jpg',
+            gallery: 'toronto',
+            name: 'Fairmont',
             description: 'Lorem ipsum dolor sit amet'
         }
     ]
 }
 
-export default ImageCollections
+export const Galleries = {
+    neon1: {
+        name: 'Neon One',
+        description: 'Neon One description'
+    },
+    neon2: {
+        name: 'Neon Two',
+        description: 'Neon Two Lorem description'
+    },
+    toronto: {
+        name: 'Toronto',
+        description: 'Toronto Lorem description'
+    },
+}

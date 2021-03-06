@@ -1,6 +1,6 @@
 import { useContext, useRef, useEffect, useState } from 'react'
 import * as s from './ScreenSlider.style'
-import ImageCollections from '../../../ImageCollections'
+import { ImageCollections } from '../../../ImageCollections'
 
 // Framer motion
 import { motion, AnimatePresence } from 'framer-motion'

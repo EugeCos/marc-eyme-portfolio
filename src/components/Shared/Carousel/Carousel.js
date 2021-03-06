@@ -1,6 +1,6 @@
 import { useRef, useLayoutEffect, useEffect, useContext, useState } from 'react'
 import * as s from './Carousel.style'
-import ImageCollections from '../../../ImageCollections'
+import { ImageCollections, Galleries } from '../../../ImageCollections'
 import ScrollBooster from 'scrollbooster'
 
 // Context
@@ -35,15 +35,18 @@ const CarouselWithScrollbar = ({
   }, [sliderPosition])
 
 
-  // Set slider images
+  // Set slider galleries
   useEffect(() => {
-    const images = [];
+    const galleries = [];
 
     for(let item in ImageCollections) {
-      images.push(ImageCollections[item][0]) 
+      const newGallery = ImageCollections[item][0];
+      newGallery['name'] = Galleries[newGallery.gallery].name; // Find gallery in galleries list and set name
+      newGallery['description'] = Galleries[newGallery.gallery].description; // Find gallery in galleries list and set description
+      galleries.push(newGallery) 
     }
 
-    setSliderPhotos(images)
+    setSliderPhotos(galleries)
   }, [])
 
 
