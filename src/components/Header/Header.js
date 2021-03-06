@@ -51,7 +51,7 @@ const Header = () => {
 
 
   return (
-    <s.HeaderContainer>
+    <s.HeaderContainer palette={context.palette}>
       <s.Logo src="/img/logo.png" onClick={() => handleLogoClick()} />
       <s.MenuOptionsContainer>
         { menuOptions }

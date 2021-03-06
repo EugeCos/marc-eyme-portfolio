@@ -179,7 +179,7 @@ export const BottomNavigationSection = styled.section`
   position: fixed;
   bottom: 0;
   right: 0;
-  background: #1e272e;
+  background: #161616;
   color: #fff;
   display: flex;
   justify-content: center;

@@ -32,9 +32,10 @@ const App = () => {
     dark: {
       background: '#333',
       buttons: '#eb3b5a',
+      headerBg: '#161616',
+      menuItemActive: '#fff',
       menuItemPassive: '#8395a7',
       textVerticalSlider: '#2c2c54',
-      menuItemActive: '#fff',
       slider: {
         thumb: '#eb3b5a',
         range: '#000000'
@@ -43,9 +44,10 @@ const App = () => {
     light: {
       background: '#fff',
       buttons: '#1e272e',
+      headerBg: '#FFFFFF',
+      menuItemActive: '#2c2c54',
       menuItemPassive: '#8395a7',
       textVerticalSlider: '#fff',
-      menuItemActive: '#2c2c54',
       slider: {
         thumb: '#000000',
         range: '#b2bec3'

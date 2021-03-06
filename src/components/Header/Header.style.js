@@ -2,13 +2,13 @@ import styled from '@emotion/styled';
 
 export const HeaderContainer = styled.div`
   margin: 0 auto;
-  width: 90%;
-  padding: 5pt 8pt;
+  background: ${p => p.palette.headerBg};
+  padding: 5pt 60pt;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  transition: .3s ease
+  transition: .3s ease;
 `
 
 export const Logo = styled.img`
