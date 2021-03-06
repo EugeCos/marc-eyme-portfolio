@@ -5,9 +5,6 @@ import * as s from './Home.style'
 // Framer motion
 import { motion } from 'framer-motion'
 
-// Material UI
-import Switch from '@material-ui/core/Switch';
-
 // Carousel
 import CarouselWithScrollbar from 'components/Shared/Carousel/Carousel'
 
@@ -27,7 +24,7 @@ const Home = () => {
 
   // Context
   const context = useContext(AppContext);
-  const { handleDarkThemeToggle, darkTheme, palette } = context;
+  const { darkTheme, palette } = context;
 
 
   // State
@@ -88,15 +85,6 @@ const Home = () => {
       transition={{ duration: 0.25 }}
     >
       <s.Home>
-        <s.DarkTheme>
-          <p style={{ color: palette.menuItemActive }}>Dark theme</p>
-          <Switch
-            checked={darkTheme}
-            color={darkTheme ? 'primary' : 'default'}
-            onChange={() => handleDarkThemeToggle(!darkTheme)}
-          />
-
-        </s.DarkTheme>
         <s.CarouselContainer>
           <s.VerticalCounterWrapper>
             {/* Vertical box with photo count */}

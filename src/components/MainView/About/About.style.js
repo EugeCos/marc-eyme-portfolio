@@ -6,7 +6,7 @@ export const AboutContainer = styled.div`
 
 // Picture section START-----------------------------------
 export const PictureSection = styled.section`
-  height: calc(100vh - 65pt);
+  height: calc(100vh - 64pt);
   width: 45%;
   position: relative;
 `
@@ -63,7 +63,7 @@ export const SquareEffectTop = styled.div`
 export const DescriptionSection = styled.section`
   width: 55%;
   position: relative;
-  color: #fff;
+  color: ${p => p.palette.menuItemActive};
   box-sizing: border-box;
   padding: 30pt 45pt 90pt;
 `;
@@ -74,7 +74,6 @@ export const DescriptionBlock = styled.div`
   padding: 60pt 0;
   display: flex;
   flex-direction: column;
-  // border: 3px solid pink
 `
 
 export const BlockHeader = styled.div`
@@ -91,16 +90,16 @@ export const BlockHeaderNumber = styled.h1`
   position: relative; // for grey dash line
   text-transform: uppercase;
   font-size: 180%;
-  color: ;
   display: inline-block;
-  float: right
+  float: right;
+  color: #808e9b;
 `
 export const GreyDash = styled.span`
   position: absolute;
   top: 11.5pt;
   right: 50pt;
   width: 30pt;
-  border-top: 2px solid #57606f;
+  border-top: 2px solid #808e9b;
 `
 export const BlockHeaderDescription = styled.p`
   margin-top: 12pt;
@@ -142,6 +141,7 @@ export const BlackButton = styled.div`
   letter-spacing: 2px;
   cursor: pointer;
   transition: .3s;
+  color: #fff;
 
   &:hover {
     color: #a4b0be;

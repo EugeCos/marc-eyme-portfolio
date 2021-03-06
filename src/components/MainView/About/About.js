@@ -1,7 +1,11 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import * as s from './About.style'
 import { motion } from 'framer-motion'
 import { useHistory } from 'react-router-dom'
+
+// Context
+import AppContext from 'Context';
+
 
 const About = () => {
   const history = useHistory();
@@ -10,6 +14,9 @@ const About = () => {
   const [imgHovered, setImgHovered] = useState(false);
   const [hoveredLink, setHoveredLink] = useState('about');
   const [selectedLink, setSelectedLink] = useState('about');
+
+  // Context
+  const context = useContext(AppContext);
 
   const bottomLinksJSX = ['about', 'skills', 'services', 'clients'].map((item, index) => {
     return (
@@ -86,7 +93,7 @@ const About = () => {
 
 
         {/* Description section */}
-        <s.DescriptionSection>
+        <s.DescriptionSection palette={context.palette}>
           {/* Header */}
           <s.DescriptionBlock>
             <s.BlockHeader>

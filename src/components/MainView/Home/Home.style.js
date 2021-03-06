@@ -108,12 +108,3 @@ export const Slider = styled.input`
     background: ${p => p.palette.slider.thumb};
   }
 `
-
-// -------------------------------------
-// Dark Theme
-export const DarkTheme = styled.div`
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  z-index: 100
-`

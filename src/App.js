@@ -11,6 +11,9 @@ import ScreenSlider from 'components/Shared/ScreenSlider/ScreenSlider'
 // Context
 import AppContext from './Context';
 
+// Material UI
+import Switch from '@material-ui/core/Switch';
+
 
 const App = () => {
   const [darkTheme, toggleDarkTheme] = useState(true);
@@ -75,6 +78,16 @@ const App = () => {
           <>
             <Header />
             <MainView />
+
+          {/* Dark Theme Toggler */}
+          <s.DarkTheme>
+            <p style={{ color: darkTheme ? '#3F51BA' : '#333' }}>Dark theme</p>
+            <Switch
+              checked={darkTheme}
+              color={darkTheme ? 'primary' : 'default'}
+              onChange={() => handleDarkThemeToggle(!darkTheme)}
+            />
+          </s.DarkTheme>
           </>
         )}
       </s.App>
