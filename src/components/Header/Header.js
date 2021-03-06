@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect, useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { useHistory } from 'react-router-dom';
 import * as s from './Header.style'
 
@@ -15,18 +15,14 @@ const Header = () => {
   // Context
   const context = useContext(AppContext);
 
-
   // Effects
   // Set selected header item based on URL pathname
-  useLayoutEffect(() => {
-    const path = window.location.pathname;
-    const parts = path.split('/');
-
-    if (path !== '/') {
-      let selectedItem = (parts[1].charAt(0).toUpperCase() + parts[1].slice(1)).toLowerCase()
+  useEffect(() => {
+    if (context.currentPath !== '/') {
+      const selectedItem = context.currentPath.substring(1);
       setSelected(selectedItem)
     }
-  }, [])
+  }, [context.currentPath])
  
   const handleMenuItemClick = menuItem => {
     setSelected(menuItem)
@@ -41,7 +37,6 @@ const Header = () => {
 
 
   const menuOptions = ['about', 'portfolio', 'prints', 'contact'].map((item, index) => {
-    // test
     return (
       <s.MenuItem 
         key={`0${index}-${item}`}

@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 
 import * as s from './App.style'
 
@@ -14,7 +15,14 @@ import AppContext from './Context';
 const App = () => {
   const [darkTheme, toggleDarkTheme] = useState(true);
   const [sliderOpened, openSlider] = useState(false);
-  const [gallerySelected, setGallerySelected] = useState(null)
+  const [gallerySelected, setGallerySelected] = useState(null);
+  const [currentPath, setCurrentPath] = useState('/')
+
+  // Listen to URL updates
+  const location = useLocation()
+  useEffect(() => {
+    setCurrentPath(location.pathname)
+  }, [location])
 
   const handleDarkThemeToggle = () => {
     toggleDarkTheme(!darkTheme)
@@ -46,6 +54,7 @@ const App = () => {
   }
 
   const context = {
+    currentPath,
     darkTheme,
     palette: palettes[darkTheme ? 'dark' : 'light'],
     handleDarkThemeToggle,

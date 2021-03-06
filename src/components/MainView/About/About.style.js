@@ -4,7 +4,8 @@ export const AboutContainer = styled.div`
   display: flex;
 `
 
-export const PictureContainer = styled.div`
+// Picture section START-----------------------------------
+export const PictureSection = styled.section`
   height: calc(100vh - 65pt);
   width: 45%;
   position: relative;
@@ -14,7 +15,8 @@ export const PictureWrapper = styled.div`
   height: inherit;
   width: 100%;
   position: sticky;
-  background-image: url(img/headshot_bw.PNG);
+  // background-image: url(img/headshot_bw.PNG);
+  background-image: url(https://www.smartertravel.com/wp-content/uploads/2016/08/travel-tourist-photographer-lens-camera-sunset-1200x627.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -22,6 +24,7 @@ export const PictureWrapper = styled.div`
 
 export const PictureAboutTextWrapper = styled.div`
   position: absolute;
+  opacity: ${p => p.hovered ? 1 : 0};
   color: ${p => p.hovered ? '#fff' : '#333'};
   width: 50%;
   bottom: 8%;
@@ -53,8 +56,124 @@ export const SquareEffectTop = styled.div`
   border-left: 3px solid #333;
   transition: .5s ease;
 `
+// Picture section END-----------------------------------
 
-export const BottomNavigationWrapper = styled.div`
+
+// Description section START-----------------------------
+export const DescriptionSection = styled.section`
+  width: 55%;
+  position: relative;
+  color: #fff;
+  box-sizing: border-box;
+  padding: 30pt 45pt 90pt;
+`;
+
+export const DescriptionBlock = styled.div`
+  width: 100%;  
+  height: calc(100vh - 310pt);
+  padding: 60pt 0;
+  display: flex;
+  flex-direction: column;
+  // border: 3px solid pink
+`
+
+export const BlockHeader = styled.div`
+  border-bottom: 1px solid #57606f;
+  padding-bottom: 22.5pt;
+
+`
+export const BlockHeaderName = styled.h1`
+  text-transform: uppercase;
+  font-size: 200%;
+  display: inline-block;
+`
+export const BlockHeaderNumber = styled.h1`
+  position: relative; // for grey dash line
+  text-transform: uppercase;
+  font-size: 180%;
+  color: ;
+  display: inline-block;
+  float: right
+`
+export const GreyDash = styled.span`
+  position: absolute;
+  top: 11.5pt;
+  right: 50pt;
+  width: 30pt;
+  border-top: 2px solid #57606f;
+`
+export const BlockHeaderDescription = styled.p`
+  margin-top: 12pt;
+  font-style: italic
+`
+
+export const BlockContent = styled.div`
+  padding: 30pt 0;
+  line-height: 26px;
+`
+
+// Content Part One (About)
+export const LongDescription = styled.p``
+
+export const StatsWrapper = styled.div`
+  display: flex;
+  padding: 40pt 0;
+  justify-content: space-between
+`
+
+export const StatsItem = styled.div`
+  text-align: center;
+  width: 30%;
+
+  h1{
+    display: inline;
+    font-size: 250%;
+  }
+`
+
+export const BlackButton = styled.div`
+  position: relative;
+  margin: 0 auto;
+  border: 1px solid #2f3542;
+  text-transform: uppercase;
+  display: inline;
+  padding: 10pt 24pt;
+  background: black;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: .3s;
+
+  &:hover {
+    color: #a4b0be;
+    padding-right: 50pt;
+
+    &:before {
+      content: '';
+      position: absolute;
+      right: 15pt;
+      top: 50%;
+      width: 16pt;
+      height: 1px;
+      background: #fff;
+    }
+  }
+
+  &:before {
+    transition: .3s;
+    content: '';
+    position: absolute;
+    right: 15pt;
+    top: 50%;
+    width: 0;
+    height: 1px;
+    background: #fff;
+  }
+`
+// Description section END-------------------------------
+
+
+// Bottom links section START----------------------------
+export const BottomNavigationSection = styled.section`
   height: 67.5pt;
   width: 55%;
   position: fixed;
@@ -111,3 +230,4 @@ export const BottomNavLink = styled.p`
     transition: letter-spacing .3s ease
   `}
 `
+// Bottom links section END----------------------------

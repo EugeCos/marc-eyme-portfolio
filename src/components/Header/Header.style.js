@@ -25,10 +25,10 @@ export const MenuOptionsContainer = styled.div`
 
 export const MenuItem = styled.span`
   ${p => p.selected && `
-    letter-spacing: 2px;
-    font-weight: 600;
+    letter-spacing: 2px !important;
   `}
   width: 100pt;
+  letter-spacing: 1px;
   text-align: center;
   font-weight: 600;
   text-transform: uppercase;
