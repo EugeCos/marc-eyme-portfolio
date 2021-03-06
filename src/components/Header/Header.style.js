@@ -28,8 +28,9 @@ export const MenuItem = styled.span`
     letter-spacing: 2px;
     font-weight: 600;
   `}
-  width: 82.5pt;
+  width: 100pt;
   text-align: center;
+  font-weight: 600;
   text-transform: uppercase;
   color: ${p => p.selected ? p.palette.menuItemActive : p.palette.menuItemPassive};
   cursor: pointer;
