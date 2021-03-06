@@ -6,7 +6,7 @@ export const AboutContainer = styled.div`
 
 // Picture section START-----------------------------------
 export const PictureSection = styled.section`
-  height: calc(100vh - 64pt);
+  height: calc(100vh - 66pt);
   width: 45%;
   position: relative;
 `

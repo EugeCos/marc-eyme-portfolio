@@ -60,11 +60,12 @@ export const BottomSliderWrapper = styled.div`
   position: absolute;
   left: 0;
   bottom: 0;
-  height: 67.5pt;
+  height: 69.5pt;
   width: calc(100% - 60pt);
   padding-left: 60pt;
   display: flex;
   align-items: center;
+  background-color: #161616;
 `
 
 export const CarouselButtonsWrapper = styled.div`

@@ -7,7 +7,7 @@ export const ContactContainer = styled.div`
 // Content section START-----------------------------
 export const ContentSection = styled.section`
   width: 55%;
-  height: calc(100vh - 64pt);
+  height: calc(100vh - 69pt);
   position: relative;
   color: #fff;
   box-sizing: border-box;
@@ -19,7 +19,7 @@ export const ContentSection = styled.section`
 
 // Picture section START-----------------------------
 export const PictureSection = styled.section`
-  height: calc(100vh - 65pt);
+  height: calc(100vh - 66pt);
   width: 45%;
   position: relative;
 `
@@ -39,7 +39,7 @@ export const PictureAboutTextWrapper = styled.div`
   color: #fff;
   width: 50%;
   bottom: 8%;
-  left: 8%;
+  left: 15%;
   background: #00000073;
   border-radius: 10px;
   padding: 10px 26px;

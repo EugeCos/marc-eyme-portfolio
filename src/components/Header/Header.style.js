@@ -3,18 +3,28 @@ import styled from '@emotion/styled';
 export const HeaderContainer = styled.div`
   margin: 0 auto;
   background: ${p => p.palette.headerBg};
-  padding: 5pt 60pt;
+  padding: 5pt 66pt;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   transition: .3s ease;
+  height: 56pt;
 `
 
-export const Logo = styled.img`
-  width: 50pt;
+export const Logo = styled.div`
+  width: 450pt;
   cursor: pointer;
-  border: 1px solid transparent;
+  color: ${p => p.palette.menuItemActive};
+  font-weight: 600;
+  font-family: 'Wire One', sans-serif;
+  letter-spacing: 4px;
+  font-size: 220%;
+  padding-bottom: 4.5pt;
+
+  span {
+    color: ${p => p.palette.slider.thumb}
+  }
 `
 
 export const MenuOptionsContainer = styled.div`

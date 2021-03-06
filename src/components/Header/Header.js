@@ -52,7 +52,9 @@ const Header = () => {
 
   return (
     <s.HeaderContainer palette={context.palette}>
-      <s.Logo src="/img/logo.png" onClick={() => handleLogoClick()} />
+      <s.Logo onClick={() => handleLogoClick()} palette={context.palette} >
+        <span>M</span>arc <span>E</span>ymé Photography
+      </s.Logo>
       <s.MenuOptionsContainer>
         { menuOptions }
       </s.MenuOptionsContainer>
