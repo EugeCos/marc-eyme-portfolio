@@ -13,7 +13,6 @@ export const HeaderContainer = styled.div`
 `
 
 export const Logo = styled.div`
-  width: 450pt;
   cursor: pointer;
   color: ${p => p.palette.menuItemActive};
   font-weight: 600;

@@ -65,7 +65,7 @@ export const BottomSliderWrapper = styled.div`
   padding-left: 60pt;
   display: flex;
   align-items: center;
-  background-color: #161616;
+  background-color: ${p => p.darkTheme ? '#161616' : '#fff'};
 `
 
 export const CarouselButtonsWrapper = styled.div`

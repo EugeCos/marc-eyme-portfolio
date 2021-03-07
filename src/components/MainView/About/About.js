@@ -1,15 +1,15 @@
 import { useState, useContext } from 'react'
 import * as s from './About.style'
 import { motion } from 'framer-motion'
-import { useHistory } from 'react-router-dom'
+
+// Black button
+import BlackButton from 'components/Shared/BlackButton/BlackButton'
 
 // Context
 import AppContext from 'Context';
 
 
 const About = () => {
-  const history = useHistory();
-
   // State
   const [imgHovered, setImgHovered] = useState(false);
   const [hoveredLink, setHoveredLink] = useState('about');
@@ -67,7 +67,7 @@ const About = () => {
           </s.StatsItem>
         </s.StatsWrapper>
 
-        <s.BlackButton onClick={() => history.push('/portfolio')}>My Portfolio</s.BlackButton>
+        <BlackButton url={'/portfolio'} buttonText={'My Portfolio'} />
       </>
     )
   }

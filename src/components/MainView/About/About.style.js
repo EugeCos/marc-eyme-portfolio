@@ -65,7 +65,7 @@ export const DescriptionSection = styled.section`
   position: relative;
   color: ${p => p.palette.menuItemActive};
   box-sizing: border-box;
-  padding: 30pt 45pt 90pt;
+  padding: 30pt 100pt 90pt;
 `;
 
 export const DescriptionBlock = styled.div`

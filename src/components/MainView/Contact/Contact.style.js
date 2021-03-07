@@ -9,10 +9,122 @@ export const ContentSection = styled.section`
   width: 55%;
   height: calc(100vh - 69pt);
   position: relative;
-  color: #fff;
+  color: ${p => p.palette.menuItemActive};
   box-sizing: border-box;
-  padding: 30pt 45pt 90pt;
-  border: 3px solid pink
+  padding: 30pt 100pt 90pt;
+`
+
+export const DescriptionBlock = styled.div`
+  width: 100%;  
+  height: calc(100vh - 310pt);
+  padding: 60pt 0;
+  display: flex;
+  flex-direction: column;
+`
+
+export const BlockHeader = styled.div`
+  border-bottom: 1px solid #57606f;
+  padding-bottom: 22.5pt;
+
+`
+export const BlockHeaderName = styled.h1`
+  text-transform: uppercase;
+  font-size: 200%;
+  display: inline-block;
+`
+
+export const BlockHeaderDescription = styled.p`
+  margin-top: 12pt;
+  font-style: italic
+`
+
+export const BlockContent = styled.div`
+  padding: 30pt 0;
+  line-height: 26px;
+`
+
+// Content Part One (About)
+export const SocialWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 12pt;
+  text-transform: uppercase;
+
+  span {
+    cursor: pointer;
+    transition: .3s ease;
+
+    &:hover {
+      color: #eb3b5a
+    }
+  }
+`
+
+export const SocialIcon = styled.img`
+  height: 20pt;
+  margin-right: 18pt;
+`
+
+export const GetInTouch = styled.h1`
+  margin: 40pt 0 18pt;
+  text-transform: uppercase
+`
+
+export const InputContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20pt;
+`
+
+export const Input = styled.input`
+  background: #FFFFFF1A;  
+  border: 1px solid ${p => p.darkTheme ? 'transparent' : '#d1ccc0'};
+  padding: 20px 30px;
+  width: 50%;
+  color: ${p => p.darkTheme ? '#fff' : '#333'};
+  text-transform: uppercase;
+  transition: .2s ease;
+  width: 40%;
+
+  &:focus {
+    outline: none !important;
+    border: 1px solid #485460;
+    box-shadow: 0 0 10px #719ECE;
+  }
+
+  &::placeholder {
+    color: ${p => p.darkTheme ? '#d1ccc0' : '#333'};
+  }
+`
+
+export const TextareaContainer = styled.div`
+  width: 100%;
+  height: 100pt;
+  display: flex;
+  margin-bottom: 28pt;
+`
+
+export const Textarea = styled.textarea`
+  background: #FFFFFF1A;  
+  border: 1px solid ${p => p.darkTheme ? 'transparent' : '#d1ccc0'};
+  padding: 20px 30px;
+  font-weight: 600;
+  font-family: inherit;
+  width: 100% !important;
+  color: ${p => p.darkTheme ? '#fff' : '#333'};
+  text-transform: uppercase;
+  transition: .2s ease;
+  width: 40%;
+
+  &:focus {
+    outline: none !important;
+    border: 1px solid #485460;
+    box-shadow: 0 0 10px #719ECE;
+  }
+
+  &::placeholder {
+    color: ${p => p.darkTheme ? '#d1ccc0' : '#333'};
+  }
 `
 // Content section END-------------------------------
 
@@ -32,29 +144,6 @@ export const PictureWrapper = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-`
-
-export const PictureAboutTextWrapper = styled.div`
-  position: absolute;
-  color: #fff;
-  width: 50%;
-  bottom: 8%;
-  left: 15%;
-  background: #00000073;
-  border-radius: 10px;
-  padding: 10px 26px;
-  transition: all .5s ease;
-
-  h1 {
-    font-size: 300%;
-    margin-bottom: 14px;
-    letter-spacing: 3px;
-  }
-
-  p {
-    font-style: italic;
-    font-size: 125%;
-  }
 `
 
 export const SquareEffectTop = styled.div`

@@ -103,7 +103,7 @@ const Home = () => {
           />
 
           {/* Footer with slider */}
-          <s.BottomSliderWrapper>
+          <s.BottomSliderWrapper darkTheme={darkTheme}>
             <s.CarouselButtonsWrapper palette={palette}>
               <FontAwesomeIcon icon={faCaretLeft} onClick={() => handleArrowClick("decrease")} />              
               <FontAwesomeIcon icon={faCaretRight} onClick={() => handleArrowClick("increase")} />
