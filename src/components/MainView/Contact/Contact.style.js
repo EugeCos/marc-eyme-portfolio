@@ -7,17 +7,34 @@ export const ContactContainer = styled.div`
 // Content section START-----------------------------
 export const ContentSection = styled.section`
   width: 55%;
-  height: calc(100vh - 69pt);
-  position: relative;
+  height: auto;
+  min-height: calc(100% - 66pt);
+  overflow-y: scroll;
+  position: fixed;
   color: ${p => p.palette.menuItemActive};
   box-sizing: border-box;
-  padding: 30pt 100pt 90pt;
+  padding: 50pt 100pt 0;  
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #161616;
+    border-radius: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #404040;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: #575757;
+  }
 `
 
 export const DescriptionBlock = styled.div`
   width: 100%;  
   height: calc(100vh - 310pt);
-  padding: 60pt 0;
+  padding: 20pt 0;
   display: flex;
   flex-direction: column;
 `
@@ -39,7 +56,7 @@ export const BlockHeaderDescription = styled.p`
 `
 
 export const BlockContent = styled.div`
-  padding: 30pt 0;
+  padding: 30pt 0 60pt;
   line-height: 26px;
 `
 
@@ -80,11 +97,10 @@ export const Input = styled.input`
   background: #FFFFFF1A;  
   border: 1px solid ${p => p.darkTheme ? 'transparent' : '#d1ccc0'};
   padding: 20px 30px;
-  width: 50%;
   color: ${p => p.darkTheme ? '#fff' : '#333'};
   text-transform: uppercase;
   transition: .2s ease;
-  width: 40%;
+  width: 37%;
 
   &:focus {
     outline: none !important;
@@ -133,7 +149,8 @@ export const Textarea = styled.textarea`
 export const PictureSection = styled.section`
   height: calc(100vh - 66pt);
   width: 45%;
-  position: relative;
+  position: fixed;
+  right: 0;
 `
 
 export const PictureWrapper = styled.div`

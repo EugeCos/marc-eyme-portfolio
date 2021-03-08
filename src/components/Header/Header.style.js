@@ -1,15 +1,19 @@
 import styled from '@emotion/styled';
 
 export const HeaderContainer = styled.div`
+  position: fixed;
+  width: 100%;
+  top: 0;
   margin: 0 auto;
   background: ${p => p.palette.headerBg};
-  padding: 5pt 66pt;
+  padding: 18pt 66pt;
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   transition: .3s ease;
-  height: 56pt;
+  z-index: 10
 `
 
 export const Logo = styled.div`

@@ -8,13 +8,12 @@ export const AboutContainer = styled.div`
 export const PictureSection = styled.section`
   height: calc(100vh - 66pt);
   width: 45%;
-  position: relative;
+  position: fixed;
 `
 
 export const PictureWrapper = styled.div`
   height: inherit;
   width: 100%;
-  position: sticky;
   // background-image: url(img/headshot_bw.PNG);
   background-image: url(https://www.smartertravel.com/wp-content/uploads/2016/08/travel-tourist-photographer-lens-camera-sunset-1200x627.jpg);
   background-size: cover;
@@ -62,16 +61,35 @@ export const SquareEffectTop = styled.div`
 // Description section START-----------------------------
 export const DescriptionSection = styled.section`
   width: 55%;
-  position: relative;
+  position: fixed;
+  right: 0;
+  overflow-y: scroll;
   color: ${p => p.palette.menuItemActive};
   box-sizing: border-box;
-  padding: 30pt 100pt 90pt;
+  height: auto;
+  min-height: calc(100% - 66pt);
+  padding: 50pt 100pt 0;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #161616;
+    border-radius: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #404040;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: #575757;
+  }
 `;
 
 export const DescriptionBlock = styled.div`
   width: 100%;  
   height: calc(100vh - 310pt);
-  padding: 60pt 0;
+  padding: 20pt 0;
   display: flex;
   flex-direction: column;
 `
@@ -107,17 +125,20 @@ export const BlockHeaderDescription = styled.p`
 `
 
 export const BlockContent = styled.div`
-  padding: 30pt 0;
+  padding: 30pt 0 60pt;
   line-height: 26px;
 `
 
 // Content Part One (About)
-export const LongDescription = styled.p``
+export const LongDescription = styled.p`
+  // max-height: 100px;
+  // overflow: scroll
+`
 
 export const StatsWrapper = styled.div`
   display: flex;
   padding: 40pt 0;
-  justify-content: space-between
+  justify-content: space-between;
 `
 
 export const StatsItem = styled.div`

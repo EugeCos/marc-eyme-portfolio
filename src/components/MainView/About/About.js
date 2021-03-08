@@ -115,12 +115,12 @@ const About = () => {
 
 
         {/* Bottom navigation section */}
-        <s.BottomNavigationSection>
+        {/* <s.BottomNavigationSection>
           <s.BottomLinksWrapper hovered={hoveredLink} selected={selectedLink}>
             {bottomLinksJSX}
             <div className="underbar" />
           </s.BottomLinksWrapper>
-        </s.BottomNavigationSection>
+        </s.BottomNavigationSection> */}
       </s.AboutContainer>
     </motion.nav>
   );
