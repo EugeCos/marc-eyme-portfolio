@@ -13,7 +13,7 @@ export const HeaderContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   transition: .3s ease;
-  z-index: 10
+  z-index: 10;
 `
 
 export const Logo = styled.div`
@@ -33,7 +33,7 @@ export const Logo = styled.div`
 export const MenuOptionsContainer = styled.div`
   display: flex;
   justify-content: space-around;
-  width: 35%;
+  width: 300pt;
 `
 
 export const MenuItem = styled.span`

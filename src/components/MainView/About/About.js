@@ -12,25 +12,25 @@ import AppContext from 'Context';
 const About = () => {
   // State
   const [imgHovered, setImgHovered] = useState(false);
-  const [hoveredLink, setHoveredLink] = useState('about');
-  const [selectedLink, setSelectedLink] = useState('about');
+  // const [hoveredLink, setHoveredLink] = useState('about');
+  // const [selectedLink, setSelectedLink] = useState('about');
 
   // Context
   const context = useContext(AppContext);
 
-  const bottomLinksJSX = ['about', 'skills', 'services', 'clients'].map((item, index) => {
-    return (
-      <s.BottomNavLink
-        key={`${index}-${item}`}
-        onMouseEnter={() => setHoveredLink(item)}
-        onMouseLeave={() => setHoveredLink(selectedLink)}
-        onClick={() => setSelectedLink(item)} 
-        selected={item === selectedLink}       
-      >
-        {item}
-      </s.BottomNavLink>
-    )  
-  })
+  // const bottomLinksJSX = ['about', 'skills', 'services', 'clients'].map((item, index) => {
+  //   return (
+  //     <s.BottomNavLink
+  //       key={`${index}-${item}`}
+  //       onMouseEnter={() => setHoveredLink(item)}
+  //       onMouseLeave={() => setHoveredLink(selectedLink)}
+  //       onClick={() => setSelectedLink(item)} 
+  //       selected={item === selectedLink}       
+  //     >
+  //       {item}
+  //     </s.BottomNavLink>
+  //   )  
+  // })
 
   // About block
   const ContentPartOne = () => {
@@ -85,10 +85,10 @@ const About = () => {
           
           <s.SquareEffectTop hovered={imgHovered} />
           
-          <s.PictureAboutTextWrapper hovered={imgHovered}>
+          {/* <s.PictureAboutTextWrapper hovered={imgHovered}>
             <h1>About Me</h1>
             <p>Glendronach choking hazard zombie courvoisier rabo-de-galo yorsh martell</p>
-          </s.PictureAboutTextWrapper>
+          </s.PictureAboutTextWrapper> */}
         </s.PictureSection>
 
 

@@ -40,7 +40,10 @@ const CarouselWithScrollbar = ({
     const galleries = [];
 
     for(let item in ImageCollections) {
+      console.log(item)
+      console.log(ImageCollections[item])
       const newGallery = ImageCollections[item][0];
+      // console.log("New Gallery: ", newGallery)
       newGallery['name'] = Galleries[newGallery.gallery].name; // Find gallery in galleries list and set name
       newGallery['description'] = Galleries[newGallery.gallery].description; // Find gallery in galleries list and set description
       galleries.push(newGallery) 

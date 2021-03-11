@@ -36,7 +36,7 @@ const Header = () => {
   }
 
 
-  const menuOptions = ['about', 'portfolio', 'prints', 'contact'].map((item, index) => {
+  const menuOptions = ['about', 'portfolio', 'contact'].map((item, index) => {
     return (
       <s.MenuItem 
         key={`0${index}-${item}`}
