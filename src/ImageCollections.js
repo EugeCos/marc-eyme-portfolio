@@ -223,7 +223,7 @@ export const ImageCollections = {
             description: 'Lorem ipsum dolor sit amet'
         }
     ],
-    neon1: [
+    neon: [
         {
             url: 'img/slider/Neon 01.jpg',
             gallery: 'neon1',
@@ -242,8 +242,6 @@ export const ImageCollections = {
             name: 'Exit Sign',
             description: 'Lorem ipsum dolor sit amet'
         },
-    ],
-    neon2: [
         {
             url: 'img/slider/Neon 04.jpg',
             gallery: 'neon2',
@@ -309,12 +307,8 @@ export const Galleries = {
         description: 'Purple Lorem description'
     },
     neon1: {
-        name: 'Neon One',
-        description: 'Neon One description'
-    },
-    neon2: {
-        name: 'Neon Two',
-        description: 'Neon Two Lorem description'
+        name: 'Neon',
+        description: 'Neon description'
     },
     toronto: {
         name: 'Toronto',

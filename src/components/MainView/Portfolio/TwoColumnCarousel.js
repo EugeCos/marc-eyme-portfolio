@@ -48,8 +48,10 @@ const TwoColumnCarousel = () => {
                 <s.SearchIconContainer onClick={e => handleZoomClick(e, item.gallery)}>
                   <s.SearchIcon src={'img/icons/search.svg'} />
                 </s.SearchIconContainer>
-                <s.SliderImage src={item.url} />
-                <s.SliderImageDataWrapper>
+                <s.ImageWrapper className='img-wrapper'>
+                    <s.SliderImage src={item.url} />
+                </s.ImageWrapper>
+                <s.SliderImageDataWrapper className="data-wrapper">
                   <s.ImageName blackFont={item.name === 'to-do'}>{item.name}</s.ImageName>
                   <s.ImageDescription blackFont={item.name === 'to-do'}>{item.description}</s.ImageDescription>
                   <s.DarkOverlay />
@@ -64,10 +66,10 @@ const TwoColumnCarousel = () => {
             <s.Viewport ref={viewportRef}>
                 <s.Content ref={contentRef}>
                 <s.RowOne>
-                    <Row arr={ImageCollections['purple']} />
+                    <Row arr={ImageCollections['purple'].concat(ImageCollections['people'])} />
                 </s.RowOne>
                 <s.RowTwo>
-                    <Row arr={ImageCollections['forest']} />
+                    <Row arr={ImageCollections['neon'].concat(ImageCollections['toronto'], ImageCollections['forest'])} />
                 </s.RowTwo>
                 </s.Content>
             </s.Viewport>

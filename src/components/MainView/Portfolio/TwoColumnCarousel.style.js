@@ -38,17 +38,39 @@ export const SliderImageWrapper = styled.div`
   flex-shrink: 0;
   cursor: grab;
 
+  .data-wrapper {
+      opacity: 0;
+      transition: all .5s ease;
+      margin-bottom: -10px;
+  }
+
   &:hover {
     span {
       transform: scale(1)
     }
+
+    .data-wrapper {
+        opacity: 1;
+        margin-bottom: 0;
+    }
+
+    img {
+        transform: scale(1.1);
+    }
   }
+`
+export const ImageWrapper = styled.div`
+  height: 100%;
+  margin-right: 7.5pt;
+  border-radius: 2px;
+  overflow: hidden;
 `
 
 export const SliderImage = styled.img`
   max-height: 100%;
-  margin-right: 7.5pt;
-  border-radius: 2px;
+  transition: all .7s ease; 
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0) scale(1, 1);
 `
 
 export const SliderImageDataWrapper = styled.div`
