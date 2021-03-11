@@ -85,15 +85,15 @@ const Home = () => {
       transition={{ duration: 0.25 }}
     >
       <s.Home>
-        <s.CarouselContainer>
-          <s.VerticalCounterWrapper>
-            {/* Vertical box with photo count */}
-            <s.VerticalCounter palette={palette} darkTheme={darkTheme}>
-              <p>{count}</p>
-              <p>{imagesWidths.length}</p>
-            </s.VerticalCounter>
-          </s.VerticalCounterWrapper>
+      {/* Vertical box with photo count */}
+      <s.VerticalCounterWrapper darkTheme={darkTheme}>
+        <s.VerticalCounter palette={palette} darkTheme={darkTheme}>
+          <p>{count}</p>
+          <p>{imagesWidths.length}</p>
+        </s.VerticalCounter>
+      </s.VerticalCounterWrapper>
 
+        <s.CarouselContainer>
           {/* Main view */}
           <CarouselWithScrollbar 
             setCarouselScrollWidth={setCarouselScrollWidth}

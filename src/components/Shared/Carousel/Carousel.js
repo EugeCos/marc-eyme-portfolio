@@ -40,8 +40,6 @@ const CarouselWithScrollbar = ({
     const galleries = [];
 
     for(let item in ImageCollections) {
-      console.log(item)
-      console.log(ImageCollections[item])
       const newGallery = ImageCollections[item][0];
       // console.log("New Gallery: ", newGallery)
       newGallery['name'] = Galleries[newGallery.gallery].name; // Find gallery in galleries list and set name
@@ -98,28 +96,6 @@ const CarouselWithScrollbar = ({
     openSlider(true)
     setGallerySelected(gallery)
   }
-
-
-//   const sliderPhotos = [    
-//     {
-//       url: 'img/slider/Neon 01.jpg',
-//       gallery: 'Neon Collection 1',
-//       name: 'Neon Gallery 1',
-//       description: 'Lorem ipsum dolor sit amet'
-//     },
-//     {
-//         url: 'img/slider/Neon 04.jpg',
-//         gallery: 'Neon Collection 2',
-//         name: 'Neon Gallery 2',
-//         description: 'Lorem ipsum dolor sit amet'
-//     },
-//     {
-//         url: 'img/slider/Toronto 01.jpg',
-//         gallery: 'Toronto Collection',
-//         name: 'Toronto Gallery',
-//         description: 'Lorem ipsum dolor sit amet'
-//     }
-// ];
 
 
   const sliderPhotosJSX = sliderPhotos.map((item, index) => {

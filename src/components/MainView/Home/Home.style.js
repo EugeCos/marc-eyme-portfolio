@@ -14,6 +14,8 @@ export const VerticalCounterWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  z-index: 5;
+  background: ${p => p.darkTheme ? '#1c1c1c' : '#fff'};
 `
 
 export const VerticalCounter = styled.div`
