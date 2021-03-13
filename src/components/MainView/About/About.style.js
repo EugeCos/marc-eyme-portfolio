@@ -222,8 +222,8 @@ export const BottomLinksWrapper = styled.div`
 
   &:nth-of-type(1):hover {
     .underbar {
-      ${p => p.hovered === 'about' && 'left: 25px'};
-      ${p => p.hovered === 'skills' && 'left: 125px'};
+      ${p => p.hovered === 'all' && 'left: 25px'};
+      ${p => p.hovered === 'forest' && 'left: 125px'};
       ${p => p.hovered === 'services' && 'left: 225px'};
       ${p => p.hovered === 'clients' && 'left: 325px'};
     };
@@ -233,8 +233,8 @@ export const BottomLinksWrapper = styled.div`
     width: 50px;
     height: 2px;
     background: orange;
-    ${p => p.selected === 'about' && 'left: 25px'};
-    ${p => p.selected === 'skills' && 'left: 125px'};
+    ${p => p.selected === 'all' && 'left: 25px'};
+    ${p => p.selected === 'forest' && 'left: 125px'};
     ${p => p.selected === 'services' && 'left: 225px'};
     ${p => p.selected === 'clients' && 'left: 325px'};
     ${p => p.selected && 'font-weight: 600'};

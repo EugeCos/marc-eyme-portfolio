@@ -64,10 +64,76 @@ export const BottomSliderWrapper = styled.div`
   left: 0;
   bottom: 0;
   height: 69.5pt;
-  width: calc(100% - 60pt);
+  // width: auto;
   padding-left: 60pt;
   display: flex;
   align-items: center;
   background-color: ${p => p.darkTheme ? '#161616' : '#fff'};
   color: #fff;
+`
+
+export const FilterBox = styled.div`
+  position: relative;
+  margin: 0 auto;
+  border: 1px solid #2d3436;
+  text-transform: uppercase;
+  display: inline;
+  padding: 10pt 24pt;
+  background: #1c1c1c;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #fff;
+`
+
+export const FilterOptionsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  height: 100%;
+`
+
+export const FilterOptionsWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+  width: 300pt;
+  cursor: pointer;
+  position: relative;
+
+  p {
+    width: 20%;
+    text-align: center;
+  }
+
+  &:nth-of-type(1):hover {
+    .underbar {
+      ${p => p.hovered === 'about' && 'left: 20pt'};
+      ${p => p.hovered === 'forest' && 'left: 20pt'};
+      ${p => p.hovered === 'people' && 'left: 120pt'};
+      ${p => p.hovered === 'neon' && 'left: 180pt'};
+      ${p => p.hovered === 'toronto' && 'left: 240pt'};
+    };
+  };
+
+  .underbar{
+    width: 50px;
+    height: 2px;
+    background: orange;
+    ${p => p.selected === 'about' && 'left: 60pt'};
+    ${p => p.selected === 'forest' && 'left: 60px'};
+    ${p => p.selected === 'people' && 'left: 120pt'};
+    ${p => p.selected === 'neon' && 'left: 180pt'};
+    ${p => p.hovered === 'toronto' && 'left: 240pt'};
+    ${p => p.selected && 'font-weight: 600'};
+    top: 20px;
+    position: absolute;
+    -webkit-transition: 0.5s ease;
+  }
+`
+
+export const FilterOption = styled.p`
+  ${p => p.selected && `
+  font-weight: 600;
+  letter-spacing: 2px;
+  transition: letter-spacing .3s ease
+  `}
 `
