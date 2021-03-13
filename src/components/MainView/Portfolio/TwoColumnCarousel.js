@@ -1,14 +1,16 @@
-import { useRef, useLayoutEffect } from 'react'
+import { useRef, useEffect, useLayoutEffect, useState } from 'react'
 import * as s from './TwoColumnCarousel.style'
 
 // Scroll booster
 import ScrollBooster from 'scrollbooster'
 
 // Components
-import { ImageCollections } from '../../../ImageCollections'
+import { Galleries } from '../../../Galleries'
 
 
 const TwoColumnCarousel = () => {
+    // State
+    const [rows, setRows] = useState({ row1: [], row2: [] })
     // Refs
     const carouselWrapperRef = useRef();
     const viewportRef = useRef();
@@ -34,18 +36,41 @@ const TwoColumnCarousel = () => {
         })
     })
 
+
+    // Initialize photo arrays
+    useEffect(() => {
+        const row1 = [], row2 = [];
+
+        const setRow = (galleryName, rowNumber) => {
+            for(let i = 0; i < Galleries[galleryName].size; i++) {
+                const newImg = {};
+                newImg.name = Galleries[galleryName].name
+                newImg.description = Galleries[galleryName].description
+                newImg.url = `img/photos/thumbnails/${galleryName}/${galleryName}_0${i + 1}.jpg`
+                rowNumber === 1 && row1.push(newImg)
+                rowNumber === 2 && row2.push(newImg)
+            }
+        }
+
+        setRow('forest', 1)
+        setRow('toronto', 1)
+        setRow('people', 2)
+        setRow('neon', 2)
+
+        setRows({ row1, row2})
+    }, [])
+
     const handleZoomClick = (e, gallery) => {
         e.preventDefault()
         // openSlider(true)
         // setGallerySelected(gallery)
     } 
 
-
     const Row = ({ arr }) => {
         return arr.map((item, index) => {
             return (
-            <s.SliderImageWrapper key={`${index}-${item}`}>
-                <s.SearchIconContainer onClick={e => handleZoomClick(e, item.gallery)}>
+            <s.SliderImageWrapper key={`${index}-${item.name}`}>
+                <s.SearchIconContainer onClick={e => handleZoomClick(e, item.name)}>
                   <s.SearchIcon src={'img/icons/search.svg'} />
                 </s.SearchIconContainer>
                 <s.ImageWrapper className='img-wrapper'>
@@ -66,10 +91,10 @@ const TwoColumnCarousel = () => {
             <s.Viewport ref={viewportRef}>
                 <s.Content ref={contentRef}>
                 <s.RowOne>
-                    <Row arr={ImageCollections['purple'].concat(ImageCollections['people'])} />
+                    <Row arr={rows.row1} />
                 </s.RowOne>
                 <s.RowTwo>
-                    <Row arr={ImageCollections['neon'].concat(ImageCollections['toronto'], ImageCollections['forest'])} />
+                    <Row arr={rows.row2} />
                 </s.RowTwo>
                 </s.Content>
             </s.Viewport>

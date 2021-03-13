@@ -1,6 +1,6 @@
 import { useRef, useLayoutEffect, useEffect, useContext, useState } from 'react'
 import * as s from './Carousel.style'
-import { ImageCollections, Galleries } from '../../../ImageCollections'
+import { Galleries } from '../../../Galleries'
 import ScrollBooster from 'scrollbooster'
 
 // Context
@@ -39,11 +39,10 @@ const CarouselWithScrollbar = ({
   useEffect(() => {
     const galleries = [];
 
-    for(let item in ImageCollections) {
-      const newGallery = ImageCollections[item][0];
-      // console.log("New Gallery: ", newGallery)
-      newGallery['name'] = Galleries[newGallery.gallery].name; // Find gallery in galleries list and set name
-      newGallery['description'] = Galleries[newGallery.gallery].description; // Find gallery in galleries list and set description
+    for(let item in Galleries) {
+      const newGallery = Galleries[item]
+      const shortName = newGallery.name;
+      newGallery['thumbnail'] = `img/photos/content/${shortName}/${shortName}_01.jpg`
       galleries.push(newGallery) 
     }
 
@@ -101,10 +100,10 @@ const CarouselWithScrollbar = ({
   const sliderPhotosJSX = sliderPhotos.map((item, index) => {
     return (
       <s.SliderImageWrapper key={`${index}-${item}`}>
-        <s.SearchIconContainer onClick={e => handleZoomClick(e, item.gallery)}>
+        <s.SearchIconContainer onClick={e => handleZoomClick(e, item.name)}>
           <s.SearchIcon src={'img/icons/search.svg'} />
         </s.SearchIconContainer>
-        <s.SliderImage src={item.url} />
+        <s.SliderImage src={item.thumbnail} />
         <s.SliderImageDataWrapper>
           <s.ImageName blackFont={item.name === 'to-do'}>{item.name}</s.ImageName>
           <s.ImageDescription blackFont={item.name === 'to-do'}>{item.description}</s.ImageDescription>
