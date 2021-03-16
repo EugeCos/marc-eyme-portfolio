@@ -12,7 +12,6 @@ import AppContext from 'Context';
 
 const Portfolio = () => {
     // State
-    const [hoveredLink, setHoveredLink] = useState('all');
     const [selectedLink, setSelectedLink] = useState('all');
 
 
@@ -20,16 +19,21 @@ const Portfolio = () => {
     const context = useContext(AppContext);
     const { darkTheme, palette } = context;
 
+
     const filterOptions = ['all', 'forest', 'people', 'neon', 'toronto'].map((item, index) => {
-    return <s.FilterOption 
+    return <s.FilterOptionWrapper 
                 key={`${index}-${item}`}
-                onMouseEnter={() => setHoveredLink(item)}
-                onMouseLeave={() => setHoveredLink(selectedLink)}
                 onClick={() => setSelectedLink(item)} 
                 selected={item === selectedLink}  
             >
-                {item}
-            </s.FilterOption>
+                <s.FilterOption 
+                    selected={selectedLink === item}
+                    underlineColor={palette.slider.thumb}
+                    darkTheme={darkTheme}
+                    >
+                        {item}
+                </s.FilterOption>
+            </s.FilterOptionWrapper>
     })
 
     return (
@@ -55,12 +59,9 @@ const Portfolio = () => {
                 {/* Footer with slider */}
                 <s.BottomSliderWrapper darkTheme={darkTheme}>
                     <s.FilterBox>Filters&nbsp;&#8594;</s.FilterBox>
-                    <s.FilterOptionsContainer>
-                    <s.FilterOptionsWrapper hovered={hoveredLink} selected={selectedLink}>
+                    <s.FilterOptionsWrapper>
                         {filterOptions}
-                        <div className="underbar" />
                     </s.FilterOptionsWrapper>
-                    </s.FilterOptionsContainer>
                 </s.BottomSliderWrapper>
             </s.Portfolio>
         </motion.nav>

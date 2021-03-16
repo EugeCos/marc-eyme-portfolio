@@ -64,17 +64,16 @@ export const BottomSliderWrapper = styled.div`
   left: 0;
   bottom: 0;
   height: 69.5pt;
-  // width: auto;
+  width: 100%;
   padding-left: 60pt;
   display: flex;
   align-items: center;
   background-color: ${p => p.darkTheme ? '#161616' : '#fff'};
-  color: #fff;
+  color: ${p => p.darkTheme ? '#fff' : '#161616'};
 `
 
 export const FilterBox = styled.div`
   position: relative;
-  margin: 0 auto;
   border: 1px solid #2d3436;
   text-transform: uppercase;
   display: inline;
@@ -85,55 +84,54 @@ export const FilterBox = styled.div`
   color: #fff;
 `
 
-export const FilterOptionsContainer = styled.div`
-  display: flex;
-  align-items: center;
-  height: 100%;
-`
-
 export const FilterOptionsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   text-transform: uppercase;
-  width: 300pt;
+  width: auto;
+  padding: 0 30pt;
   cursor: pointer;
   position: relative;
+`
 
-  p {
-    width: 20%;
-    text-align: center;
-  }
-
-  &:nth-of-type(1):hover {
-    .underbar {
-      ${p => p.hovered === 'about' && 'left: 20pt'};
-      ${p => p.hovered === 'forest' && 'left: 20pt'};
-      ${p => p.hovered === 'people' && 'left: 120pt'};
-      ${p => p.hovered === 'neon' && 'left: 180pt'};
-      ${p => p.hovered === 'toronto' && 'left: 240pt'};
-    };
-  };
-
-  .underbar{
-    width: 50px;
-    height: 2px;
-    background: orange;
-    ${p => p.selected === 'about' && 'left: 60pt'};
-    ${p => p.selected === 'forest' && 'left: 60px'};
-    ${p => p.selected === 'people' && 'left: 120pt'};
-    ${p => p.selected === 'neon' && 'left: 180pt'};
-    ${p => p.hovered === 'toronto' && 'left: 240pt'};
-    ${p => p.selected && 'font-weight: 600'};
-    top: 20px;
-    position: absolute;
-    -webkit-transition: 0.5s ease;
-  }
+export const FilterOptionWrapper = styled.span`
+  min-width: 80pt;
+  text-align: center;
 `
 
 export const FilterOption = styled.p`
+  display: inline-block;
+  position: relative;
+
   ${p => p.selected && `
-  font-weight: 600;
-  letter-spacing: 2px;
-  transition: letter-spacing .3s ease
-  `}
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      transform: scaleX(1);
+      height: 2px;
+      bottom: -3pt;
+      left: 0;
+      background-color: ${p.underlineColor};
+      transform-origin: bottom left;
+      transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+  `};
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -3pt;
+    left: 0;
+    background-color: #636e72;
+    transform-origin: bottom right;
+    transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+  }
+
+  &:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
 `
