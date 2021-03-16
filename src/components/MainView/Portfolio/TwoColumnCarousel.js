@@ -124,7 +124,7 @@ const TwoColumnCarousel = ({ selectedTag }) => {
                   <s.SearchIcon src={'img/icons/search.svg'} />
                 </s.SearchIconContainer>
                 <s.ImageWrapper className='img-wrapper'>
-                    <s.SliderImage src={item.urlSlideshow} />
+                    <s.SliderImage src={item.urlThumbnails} />
                 </s.ImageWrapper>
                 <s.SliderImageDataWrapper className="data-wrapper">
                   <s.ImageName blackFont={item.name === 'to-do'}>{item.name}</s.ImageName>
@@ -134,6 +134,7 @@ const TwoColumnCarousel = ({ selectedTag }) => {
             </s.SliderImageWrapper>
             )
         })
+
     }
 
     return (
