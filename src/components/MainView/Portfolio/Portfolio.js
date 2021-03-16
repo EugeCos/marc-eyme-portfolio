@@ -1,10 +1,10 @@
 import { useState, useEffect, useContext } from 'react'
 import * as s from './Portfolio.style'
 import { motion } from 'framer-motion'
+import { allImages } from '../../../Images'
 
 // Components
 import TwoColumnCarousel from './TwoColumnCarousel'
-import BlackButton from 'components/Shared/BlackButton/BlackButton'
 
 // Context
 import AppContext from 'Context';
@@ -13,6 +13,7 @@ import AppContext from 'Context';
 const Portfolio = () => {
     // State
     const [selectedLink, setSelectedLink] = useState('all');
+    const [allTags, setAllTags] = useState(['all'])
 
 
     // Context
@@ -20,7 +21,23 @@ const Portfolio = () => {
     const { darkTheme, palette } = context;
 
 
-    const filterOptions = ['all', 'forest', 'people', 'neon', 'toronto'].map((item, index) => {
+    // Effects
+    // Get all tags
+    useEffect(() => {
+        let newTags = ['all'];
+
+        for(let i in allImages) {
+            const imagesArr = allImages[i].images;
+            imagesArr.forEach(image => {
+                image.tags.forEach(tag => newTags.indexOf(tag) === -1 && newTags.push(tag))
+            })
+        }
+
+        setAllTags(newTags)
+    }, [])
+
+
+    const filterOptions = allTags.map((item, index) => {
     return <s.FilterOptionWrapper 
                 key={`${index}-${item}`}
                 onClick={() => setSelectedLink(item)} 

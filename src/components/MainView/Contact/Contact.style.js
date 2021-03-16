@@ -157,7 +157,7 @@ export const PictureWrapper = styled.div`
   height: inherit;
   width: 100%;
   position: sticky;
-  background-image: url('img/slider/Toronto 04.jpg');
+  background-image: url('img/photos/contact.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -165,8 +165,8 @@ export const PictureWrapper = styled.div`
 
 export const SquareEffectTop = styled.div`
   position: absolute;
-  top: 15%;
-  right: 15%;
+  top: 10%;
+  right: 10%;
   height: ${p => p.hovered ? '120px': '80px'};
   width: ${p => p.hovered ? '120px': '80px'};
   border-top: 3px solid #333;
