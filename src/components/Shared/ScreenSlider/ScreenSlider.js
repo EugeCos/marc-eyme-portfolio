@@ -1,6 +1,6 @@
 import { useContext, useRef, useEffect, useState } from 'react'
 import * as s from './ScreenSlider.style'
-import { Galleries } from '../../../Galleries'
+import { allImages } from '../../../Images'
 
 // Framer motion
 import { motion, AnimatePresence } from 'framer-motion'
@@ -25,15 +25,10 @@ const ScreenSlider = () => {
 
   // Effects
   useEffect(() => {
-    const gallery = Galleries[gallerySelected]
+    const gallery = allImages[gallerySelected];
     const photos = [];
     
-    if(Object.keys(gallery).length) {
-      for(let i = 0; i < gallery.size; i++) {
-        photos.push(`img/photos/slideshow/${gallery.name}/${gallery.name}_0${i + 1}.jpg`)
-      }
-    }
-
+    if(gallery.images) gallery.images.forEach(img => photos.push(img.urlSlideshow))
     setSliderPhotos(photos)
   }, [gallerySelected])
 

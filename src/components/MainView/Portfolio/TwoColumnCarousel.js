@@ -5,7 +5,7 @@ import * as s from './TwoColumnCarousel.style'
 import ScrollBooster from 'scrollbooster'
 
 // Components
-import { Galleries } from '../../../Galleries'
+import { allImages } from '../../../Images'
 
 
 const TwoColumnCarousel = () => {
@@ -39,26 +39,34 @@ const TwoColumnCarousel = () => {
 
     // Initialize photo arrays
     useEffect(() => {
-        const row1 = [], row2 = [];
-
-        const setRow = (galleryName, rowNumber) => {
-            for(let i = 0; i < Galleries[galleryName].size; i++) {
-                const newImg = {};
-                newImg.name = Galleries[galleryName].name
-                newImg.description = Galleries[galleryName].description
-                newImg.url = `img/photos/thumbnails/${galleryName}/${galleryName}_0${i + 1}.jpg`
-                rowNumber === 1 && row1.push(newImg)
-                rowNumber === 2 && row2.push(newImg)
-            }
+        // Place all photos into one array
+        const allPics = []
+        for(let gallery in allImages) {
+            const gal = allImages[gallery];
+            gal?.images.forEach(img => allPics.push(img))
         }
 
-        setRow('forest', 1)
-        setRow('toronto', 1)
-        setRow('people', 2)
-        setRow('neon', 2)
+        // Shuffle that array
+        const shuffledAllPics = shuffleArray(allPics);
+        
+        // Split into two equal sized arrays
+        const row1 = [], row2 = [], midPoint = Math.floor(allPics.length / 2);
+        allPics.forEach((img, index) => {
+            if(index + 1 <= midPoint) row1.push(img);
+            else row2.push(img)
+        })
 
+        // Set rows
         setRows({ row1, row2})
     }, [])
+
+
+    const shuffleArray = array => {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
 
     const handleZoomClick = (e, gallery) => {
         e.preventDefault()
@@ -74,11 +82,11 @@ const TwoColumnCarousel = () => {
                   <s.SearchIcon src={'img/icons/search.svg'} />
                 </s.SearchIconContainer>
                 <s.ImageWrapper className='img-wrapper'>
-                    <s.SliderImage src={item.url} />
+                    <s.SliderImage src={item.urlSlideshow} />
                 </s.ImageWrapper>
                 <s.SliderImageDataWrapper className="data-wrapper">
                   <s.ImageName blackFont={item.name === 'to-do'}>{item.name}</s.ImageName>
-                  <s.ImageDescription blackFont={item.name === 'to-do'}>{item.description}</s.ImageDescription>
+                  <s.ImageDescription blackFont={item.name === 'to-do'}>Gallery: {item.gallery}</s.ImageDescription>
                   <s.DarkOverlay />
                 </s.SliderImageDataWrapper>
             </s.SliderImageWrapper>
