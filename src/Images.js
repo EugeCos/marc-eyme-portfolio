@@ -150,15 +150,7 @@ export const allImages = {
                 urlContent: 'img/photos/content/people_05.jpg',
                 urlSlideshow: 'img/photos/slideshow/people_05.jpg',
                 urlThumbnails: 'img/photos/thumbnails/people_05.jpg',
-            },
-            {
-                name: 'People 6',
-                gallery: "people",
-                tags: ['people'],
-                urlContent: 'img/photos/content/people_06.jpg',
-                urlSlideshow: 'img/photos/slideshow/people_06.jpg',
-                urlThumbnails: 'img/photos/thumbnails/people_06.jpg',
-            },
+            }
         ]
     },
     toronto: {

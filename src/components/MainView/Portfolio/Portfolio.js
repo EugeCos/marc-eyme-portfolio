@@ -12,7 +12,7 @@ import AppContext from 'Context';
 
 const Portfolio = () => {
     // State
-    const [selectedLink, setSelectedLink] = useState('all');
+    const [selectedTag, setSelectedTag] = useState('all');
     const [allTags, setAllTags] = useState(['all'])
 
 
@@ -40,11 +40,11 @@ const Portfolio = () => {
     const filterOptions = allTags.map((item, index) => {
     return <s.FilterOptionWrapper 
                 key={`${index}-${item}`}
-                onClick={() => setSelectedLink(item)} 
-                selected={item === selectedLink}  
+                onClick={() => setSelectedTag(item)} 
+                selected={item === selectedTag}  
             >
                 <s.FilterOption 
-                    selected={selectedLink === item}
+                    selected={selectedTag === item}
                     underlineColor={palette.slider.thumb}
                     darkTheme={darkTheme}
                     >
@@ -70,7 +70,7 @@ const Portfolio = () => {
 
                 {/* Two column carousel */}
                 <s.TwoColumnCarouselWrapper>
-                    <TwoColumnCarousel />
+                    <TwoColumnCarousel selectedTag={selectedTag}/>
                 </s.TwoColumnCarouselWrapper>
 
                 {/* Footer with slider */}

@@ -8,9 +8,12 @@ import ScrollBooster from 'scrollbooster'
 import { allImages } from '../../../Images'
 
 
-const TwoColumnCarousel = () => {
+const TwoColumnCarousel = ({ selectedTag }) => {
     // State
+    const [allPics, setAllPics] = useState([])
     const [rows, setRows] = useState({ row1: [], row2: [] })
+
+
     // Refs
     const carouselWrapperRef = useRef();
     const viewportRef = useRef();
@@ -38,7 +41,7 @@ const TwoColumnCarousel = () => {
 
 
     // Initialize photo arrays
-    useEffect(() => {
+    useLayoutEffect(() => {
         // Place all photos into one array
         const allPics = []
         for(let gallery in allImages) {
@@ -47,18 +50,56 @@ const TwoColumnCarousel = () => {
         }
 
         // Shuffle that array
-        const shuffledAllPics = shuffleArray(allPics);
+        shuffleArray(allPics);
         
         // Split into two equal sized arrays
-        const row1 = [], row2 = [], midPoint = Math.floor(allPics.length / 2);
+        const row1 = [], row2 = [], midPoint = Math.ceil(allPics.length / 2);
         allPics.forEach((img, index) => {
             if(index + 1 <= midPoint) row1.push(img);
             else row2.push(img)
         })
 
+        // Set all pics
+        setAllPics(allPics)
+
         // Set rows
         setRows({ row1, row2})
     }, [])
+
+
+    // Update photos based on selected tag
+    useEffect(() => {
+        const filteredArr = [];
+        allPics.forEach(item => {
+            item.tags.forEach(tag => tag === selectedTag && filteredArr.push(item)) 
+        })
+
+        // Split into two equal sized arrays
+        const row1 = [], row2 = [];
+
+        let midPoint = 0;
+        if(allPics.length && selectedTag === 'all') {
+            midPoint = Math.ceil(allPics.length / 2);
+            allPics.forEach((img, index) => {
+                if(index + 1 <= midPoint) row1.push(img);
+                else row2.push(img)
+            })
+
+            // Set rows
+            setRows({ row1, row2})
+        }
+        else if (filteredArr.length && selectedTag !== 'all'){
+            midPoint = Math.ceil(filteredArr.length / 2);
+            filteredArr.forEach((img, index) => {
+                if(index + 1 <= midPoint) row1.push(img);
+                else row2.push(img)
+            })
+
+            // Set rows
+            setRows({ row1, row2})
+        }
+
+    }, [selectedTag])
 
 
     const shuffleArray = array => {
@@ -67,6 +108,7 @@ const TwoColumnCarousel = () => {
             [array[i], array[j]] = [array[j], array[i]];
         }
     }
+
 
     const handleZoomClick = (e, gallery) => {
         e.preventDefault()
