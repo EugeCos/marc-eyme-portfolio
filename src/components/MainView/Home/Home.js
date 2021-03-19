@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext, useRef } from 'react'
-import { useHistory } from 'react-router-dom'
 import * as s from './Home.style'
 
 // Framer motion
@@ -17,8 +16,6 @@ import AppContext from 'Context';
 
 
 const Home = () => {
-  const history = useHistory();
-
   // Refs
   const sliderRef = useRef()
 

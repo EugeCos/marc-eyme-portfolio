@@ -1,4 +1,5 @@
 import { useRef, useLayoutEffect, useEffect, useContext, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import * as s from './Carousel.style'
 import { allImages } from '../../../Images'
 import ScrollBooster from 'scrollbooster'
@@ -13,6 +14,8 @@ const CarouselWithScrollbar = ({
   setImagesWidth,
   sliderPosition = 0
 }) => {
+  const history = useHistory();
+
   // Refs
   const carouselWrapperRef = useRef();
   const viewportRef = useRef();
@@ -43,7 +46,7 @@ const CarouselWithScrollbar = ({
       const gal = allImages[item]
       const newGallery = {};
       newGallery.name = gal.name;
-      newGallery.description = gal.description;
+      newGallery.description = gal.shortDescription;
       newGallery.url = gal.images[0].urlContent;
       galleries.push(newGallery)
     }
@@ -107,7 +110,7 @@ const CarouselWithScrollbar = ({
         </s.SearchIconContainer>
         <s.SliderImage src={item.url} />
         <s.SliderImageDataWrapper>
-          <s.ImageName blackFont={item.name === 'to-do'}>{item.name}</s.ImageName>
+          <s.ImageName blackFont={item.name === 'to-do'} onClick={() => history.push(`portfolio/${item.name.toLowerCase()}`)}>{item.name}</s.ImageName>
           <s.ImageDescription blackFont={item.name === 'to-do'}>{item.description}</s.ImageDescription>
           <s.DarkOverlay />
         </s.SliderImageDataWrapper>

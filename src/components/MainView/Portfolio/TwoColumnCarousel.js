@@ -1,4 +1,5 @@
 import { useRef, useEffect, useLayoutEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import * as s from './TwoColumnCarousel.style'
 
 // Scroll booster
@@ -9,6 +10,8 @@ import { allImages } from '../../../Images'
 
 
 const TwoColumnCarousel = ({ selectedTag }) => {
+    const history = useHistory();
+
     // State
     const [allPics, setAllPics] = useState([])
     const [rows, setRows] = useState({ row1: [], row2: [] })
@@ -127,7 +130,7 @@ const TwoColumnCarousel = ({ selectedTag }) => {
                     <s.SliderImage src={item.urlThumbnails} />
                 </s.ImageWrapper>
                 <s.SliderImageDataWrapper className="data-wrapper">
-                  <s.ImageName blackFont={item.name === 'to-do'}>{item.name}</s.ImageName>
+                  <s.ImageName blackFont={item.name === 'to-do'} onClick={() => history.push(`portfolio/${item.gallery}`)}>{item.name}</s.ImageName>
                   <s.ImageDescription blackFont={item.name === 'to-do'}>Gallery: {item.gallery}</s.ImageDescription>
                   <s.DarkOverlay />
                 </s.SliderImageDataWrapper>

@@ -27,7 +27,7 @@ const Header = () => {
   const handleMenuItemClick = menuItem => {
     setSelected(menuItem)
     let url = menuItem.replace(/\s+/g, '-');    
-    history.push(url)
+    history.push(`/${url}`)
   }
 
   const handleLogoClick = () => {

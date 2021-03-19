@@ -14,7 +14,6 @@ export const PictureSection = styled.section`
 export const PictureWrapper = styled.div`
   height: inherit;
   width: 100%;
-  // background-image: url(img/headshot_bw.PNG);
   background-image: url(https://www.smartertravel.com/wp-content/uploads/2016/08/travel-tourist-photographer-lens-camera-sunset-1200x627.jpg);
   background-size: cover;
   background-repeat: no-repeat;

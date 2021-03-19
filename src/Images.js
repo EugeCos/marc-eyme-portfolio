@@ -1,7 +1,8 @@
 export const allImages = {
     forest: {
         name: 'Forest',
-        description: 'Forest Lorem description',
+        shortDescription: "Forest lorem ipsum",
+        longDescription: "Forest cocktail glendullan lime rickey kir bronx joker murphy's smoky martini brandy daisy ketel one. Kirsch irish flag, glentauchers, 'cheeky vimto!' Corn n' oil coronet vso dewar's scotch whisky paradise zombie porto flip paddy. Harper's my fair lady, 'glenlivet brave bull, cosmopolitan, sangría aultmore.' French 75 horse's neck screwdriver ron rico polish martini balmenach glendronach cape cod tequila slammer wild turkey?",
         images: [
             {
                 name: 'Forest 1',
@@ -55,7 +56,8 @@ export const allImages = {
     },
     neon: {
         name: 'Neon',
-        description: 'Neon Lorem description',
+        shortDescription: "Neon lorem ipsum",
+        description: "Neon cocktail glendullan lime rickey kir bronx joker murphy's smoky martini brandy daisy ketel one. Kirsch irish flag, glentauchers, 'cheeky vimto!' Corn n' oil coronet vso dewar's scotch whisky paradise zombie porto flip paddy. Harper's my fair lady, 'glenlivet brave bull, cosmopolitan, sangría aultmore.' French 75 horse's neck screwdriver ron rico polish martini balmenach glendronach cape cod tequila slammer wild turkey?",
         images: [
             {
                 name: 'Neon 1',
@@ -109,7 +111,8 @@ export const allImages = {
     },
     people: {
         name: 'People',
-        description: 'People Lorem description',
+        longDescription: "People cocktail glendullan lime rickey kir bronx joker murphy's smoky martini brandy daisy ketel one. Kirsch irish flag, glentauchers, 'cheeky vimto!' Corn n' oil coronet vso dewar's scotch whisky paradise zombie porto flip paddy. Harper's my fair lady, 'glenlivet brave bull, cosmopolitan, sangría aultmore.' French 75 horse's neck screwdriver ron rico polish martini balmenach glendronach cape cod tequila slammer wild turkey?",
+        shortDescription: "People lorem ipsum",
         images: [
             {
                 name: 'People 1',
@@ -155,7 +158,8 @@ export const allImages = {
     },
     toronto: {
         name: 'Toronto',
-        description: 'Toronto Lorem description',
+        shortDescription: 'Toronto lorem ipsum',
+        longDescription: "Toronto cocktail glendullan lime rickey kir bronx joker murphy's smoky martini brandy daisy ketel one. Kirsch irish flag, glentauchers, 'cheeky vimto!' Corn n' oil coronet vso dewar's scotch whisky paradise zombie porto flip paddy. Harper's my fair lady, 'glenlivet brave bull, cosmopolitan, sangría aultmore.' French 75 horse's neck screwdriver ron rico polish martini balmenach glendronach cape cod tequila slammer wild turkey?",
         images: [
             {
                 name: 'Toronto 1',
