@@ -1,6 +1,8 @@
 export const allImages = {
     forest: {
         name: 'Forest',
+        location: 'Thunder Bay',
+        camera: "Nikon D80",
         shortDescription: "Forest lorem ipsum",
         longDescription: "Forest cocktail glendullan lime rickey kir bronx joker murphy's smoky martini brandy daisy ketel one. Kirsch irish flag, glentauchers, 'cheeky vimto!' Corn n' oil coronet vso dewar's scotch whisky paradise zombie porto flip paddy. Harper's my fair lady, 'glenlivet brave bull, cosmopolitan, sangría aultmore.' French 75 horse's neck screwdriver ron rico polish martini balmenach glendronach cape cod tequila slammer wild turkey?",
         images: [
@@ -56,6 +58,8 @@ export const allImages = {
     },
     neon: {
         name: 'Neon',
+        location: 'NYC',
+        camera: "Nikon D80",
         shortDescription: "Neon lorem ipsum",
         description: "Neon cocktail glendullan lime rickey kir bronx joker murphy's smoky martini brandy daisy ketel one. Kirsch irish flag, glentauchers, 'cheeky vimto!' Corn n' oil coronet vso dewar's scotch whisky paradise zombie porto flip paddy. Harper's my fair lady, 'glenlivet brave bull, cosmopolitan, sangría aultmore.' French 75 horse's neck screwdriver ron rico polish martini balmenach glendronach cape cod tequila slammer wild turkey?",
         images: [
@@ -111,6 +115,8 @@ export const allImages = {
     },
     people: {
         name: 'People',
+        location: 'Israel',
+        camera: "Nikon D80",
         longDescription: "People cocktail glendullan lime rickey kir bronx joker murphy's smoky martini brandy daisy ketel one. Kirsch irish flag, glentauchers, 'cheeky vimto!' Corn n' oil coronet vso dewar's scotch whisky paradise zombie porto flip paddy. Harper's my fair lady, 'glenlivet brave bull, cosmopolitan, sangría aultmore.' French 75 horse's neck screwdriver ron rico polish martini balmenach glendronach cape cod tequila slammer wild turkey?",
         shortDescription: "People lorem ipsum",
         images: [
@@ -158,6 +164,8 @@ export const allImages = {
     },
     toronto: {
         name: 'Toronto',
+        location: 'Toronto',
+        camera: "Nikon D80",
         shortDescription: 'Toronto lorem ipsum',
         longDescription: "Toronto cocktail glendullan lime rickey kir bronx joker murphy's smoky martini brandy daisy ketel one. Kirsch irish flag, glentauchers, 'cheeky vimto!' Corn n' oil coronet vso dewar's scotch whisky paradise zombie porto flip paddy. Harper's my fair lady, 'glenlivet brave bull, cosmopolitan, sangría aultmore.' French 75 horse's neck screwdriver ron rico polish martini balmenach glendronach cape cod tequila slammer wild turkey?",
         images: [
